@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35F59215-5643-411D-878E-2123424D8C63}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFPV</RootNamespace>
+    <AssemblyName>IFPV</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NetScriptFramework">
+      <HintPath>..\Resources\NetScriptFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NetScriptFramework.Skyrim">
+      <HintPath>..\Resources\NetScriptFramework.Skyrim.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CameraCollision.cs" />
+    <Compile Include="CameraCull.cs" />
+    <Compile Include="CameraHideHelper.cs" />
+    <Compile Include="CameraMain.cs" />
+    <Compile Include="CameraResult.cs" />
+    <Compile Include="CameraStabilize.cs" />
+    <Compile Include="CameraStack.cs" />
+    <Compile Include="CameraState.cs" />
+    <Compile Include="CameraTarget.cs" />
+    <Compile Include="CameraUpdate.cs" />
+    <Compile Include="CameraValue.cs" />
+    <Compile Include="CameraValueMap.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="States\Aiming.cs" />
+    <Compile Include="States\Bleedout.cs" />
+    <Compile Include="States\Crafting.cs" />
+    <Compile Include="States\Custom.cs" />
+    <Compile Include="States\CustomPassenger.cs" />
+    <Compile Include="States\Dead.cs" />
+    <Compile Include="States\Default.cs" />
+    <Compile Include="States\Dialogue.cs" />
+    <Compile Include="States\Grabbing.cs" />
+    <Compile Include="States\Jumping.cs" />
+    <Compile Include="States\Killmove.cs" />
+    <Compile Include="States\Lich.cs" />
+    <Compile Include="States\Mounted.cs" />
+    <Compile Include="States\MountedProcess.cs" />
+    <Compile Include="States\Moving.cs" />
+    <Compile Include="States\Passenger.cs" />
+    <Compile Include="States\Priorities.cs" />
+    <Compile Include="States\Running.cs" />
+    <Compile Include="States\Sitting.cs" />
+    <Compile Include="States\SittingProcess.cs" />
+    <Compile Include="States\Sneak.cs" />
+    <Compile Include="States\SneakRoll.cs" />
+    <Compile Include="States\Sprinting.cs" />
+    <Compile Include="States\Swimming.cs" />
+    <Compile Include="States\VampireLord.cs" />
+    <Compile Include="States\Walking.cs" />
+    <Compile Include="States\Weapon.cs" />
+    <Compile Include="States\Werewolf.cs" />
+    <Compile Include="TValue.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="Values\ArrowIni.cs" />
+    <Compile Include="Values\Enable.cs" />
+    <Compile Include="Values\FaceCamera.cs" />
+    <Compile Include="Values\HeadTrack.cs" />
+    <Compile Include="Values\HideParts.cs" />
+    <Compile Include="Values\IniValue.cs" />
+    <Compile Include="Values\Input.cs" />
+    <Compile Include="Values\NearClip.cs" />
+    <Compile Include="Values\Offset1.cs" />
+    <Compile Include="Values\Offset2.cs" />
+    <Compile Include="Values\Offset3.cs" />
+    <Compile Include="Values\PositionFromHead.cs" />
+    <Compile Include="Values\Restrict.cs" />
+    <Compile Include="Values\RotationFromHead.cs" />
+    <Compile Include="Values\Stabilize.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
