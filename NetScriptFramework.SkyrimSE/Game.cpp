@@ -209,7 +209,7 @@ namespace NetScriptFramework
 					GameAddress::BSTEventSink_UStatsEvent_BSScript,
 					GameAddress::BSTEventSink_UDeviceConnected_SpeechRecognitionEvents,
 					GameAddress::BSTEventSink_UDeviceReady_SpeechRecognitionEvents,
-					GameAddress::BSTEventSink_interference_SpeechRecognitionEvents,
+					GameAddress::BSTEventSink_UInterference_SpeechRecognitionEvents,
 					GameAddress::BSTEventSink_URecognition_SpeechRecognitionEvents,
 					GameAddress::BSTEventSink_UThreadEvent_BSThreadEvent,
 					GameAddress::BSTEventSink_UBSMusicEvent,
