@@ -1,9 +1,7 @@
 **FAN UPDATE v1.5.73 - 1.5.80 by ArranzCNL**
 
 Added GameAddresses.h to NetScriptFramework.SkyrimSE which stores all memory addresses for easier maintainability.
-
 Changed namespace from Skyrim to SkyrimSE just incase it does get backported to original Skyrim.
-
 Removed Constants.h from NetScriptFramework.SkyrimSE as it is no longer required.
 
 
