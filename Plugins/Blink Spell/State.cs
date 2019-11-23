@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace BlinkSpell
 {
@@ -288,7 +288,7 @@ namespace BlinkSpell
         
         internal void Update(float diff, float totalTime)
         {
-            NetScriptFramework.Skyrim.Main main = NetScriptFramework.Skyrim.Main.Instance;
+            NetScriptFramework.SkyrimSE.Main main = NetScriptFramework.SkyrimSE.Main.Instance;
             PlayerCharacter plr = null;
             TESObjectCELL cell = null;
             SpellItem spell = this.Plugin.Settings.SpellForm;
@@ -955,28 +955,33 @@ namespace BlinkSpell
             this.AimVectorPointDoubled.Z = 0.0f;
             this.AimVectorPointDoubled.Y = 2000.0f + Math.Max(100.0f, Math.Min(8000.0f, this.Plugin.Settings.MaxDistance));
 
+            // Setup GameOffset - Updated PrepareFunction & InstallHook to take this value, I didn't update directly incase some use a different Offset.
+            int GameOffset = 0x0; // Everything is based from 1_5_62
+            var GameVersion = NetScriptFramework.Main.Game.GameVersion; // Get the game version
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80) GameOffset = 0x1F0; // Check for game version 1_5_73 and 1_5_80, update GameOffset
+
             var debug = CrashLog.Debug;
             DebugInfo.DebugFunctionInfo fn = null;
             if (debug == null || (fn = debug.GetFunctionInfo(36319)) == null)
                 throw new InvalidOperationException(this.Plugin.Name + " can't work without a debug library!");
 
-            this.fn_Actor_SetPosition = new IntPtr((long)(debug.BaseOffset + fn.Begin));
+            this.fn_Actor_SetPosition = new IntPtr( ((long)(debug.BaseOffset + fn.Begin) - (uint)GameOffset) );
 
             fn = debug.GetFunctionInfo(32301);
             if (fn != null)
-                this.fn_BGSSoundDescriptor_PlaySound = new IntPtr((long)(debug.BaseOffset + fn.Begin));
+                this.fn_BGSSoundDescriptor_PlaySound = new IntPtr( ((long)(debug.BaseOffset + fn.Begin) - (uint)GameOffset) );
 
             fn = debug.GetFunctionInfo(18185);
             if (fn != null)
-                this.fn_TESImageSpaceModifier_Apply = new IntPtr((long)(debug.BaseOffset + fn.Begin));
+                this.fn_TESImageSpaceModifier_Apply = new IntPtr( ((long)(debug.BaseOffset + fn.Begin) - (uint)GameOffset) );
 
             fn = debug.GetFunctionInfo(51907);
             if (fn != null)
-                this.fn_FlashHudMeter = new IntPtr((long)(debug.BaseOffset + fn.Begin));
+                this.fn_FlashHudMeter = new IntPtr( ((long)(debug.BaseOffset + fn.Begin) - (uint)GameOffset) );
 
             fn = debug.GetFunctionInfo(11295);
             if (fn != null)
-                this.fn_GetMagicFailedMessage = new IntPtr((long)(debug.BaseOffset + fn.Begin));
+                this.fn_GetMagicFailedMessage = new IntPtr(( (long)(debug.BaseOffset + fn.Begin) - (uint)GameOffset) );
 
             /*var cost = this.Plugin.Settings.MagickaCost;
             if (cost > 0.0f)

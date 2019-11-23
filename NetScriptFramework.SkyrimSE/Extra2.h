@@ -2,7 +2,7 @@
 
 namespace NetScriptFramework
 {
-	namespace Skyrim
+	namespace SkyrimSE
 	{		
 		interface class TESObjectCELL;
 		interface class NiAVObject;

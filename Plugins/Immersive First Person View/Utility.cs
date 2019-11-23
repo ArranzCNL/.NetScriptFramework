@@ -45,17 +45,17 @@ namespace IFPV
             return rad;
         }
 
-        internal static uint GetNiAVFlags(NetScriptFramework.Skyrim.NiAVObject obj)
+        internal static uint GetNiAVFlags(NetScriptFramework.SkyrimSE.NiAVObject obj)
         {
             return NetScriptFramework.Memory.ReadUInt32(obj.Address + 0xF4);
         }
 
-        internal static void SetNiAVFlags(NetScriptFramework.Skyrim.NiAVObject obj, uint flags)
+        internal static void SetNiAVFlags(NetScriptFramework.SkyrimSE.NiAVObject obj, uint flags)
         {
             NetScriptFramework.Memory.WriteUInt32(obj.Address + 0xF4, flags);
         }
 
-        internal static void ModNiAVFlags(NetScriptFramework.Skyrim.NiAVObject obj, uint flags, bool add)
+        internal static void ModNiAVFlags(NetScriptFramework.SkyrimSE.NiAVObject obj, uint flags, bool add)
         {
             uint ofl = GetNiAVFlags(obj);
             uint fl = ofl;

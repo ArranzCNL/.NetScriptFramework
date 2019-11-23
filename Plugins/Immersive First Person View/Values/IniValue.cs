@@ -50,9 +50,9 @@ namespace IFPV.Values
 
                 switch(this._setting.Type)
                 {
-                    case NetScriptFramework.Skyrim.SettingTypes.Float: return this._setting.GetFloat();
-                    case NetScriptFramework.Skyrim.SettingTypes.Int:
-                    case NetScriptFramework.Skyrim.SettingTypes.UInt: return this._setting.GetInt();
+                    case NetScriptFramework.SkyrimSE.SettingTypes.Float: return this._setting.GetFloat();
+                    case NetScriptFramework.SkyrimSE.SettingTypes.Int:
+                    case NetScriptFramework.SkyrimSE.SettingTypes.UInt: return this._setting.GetInt();
                 }
 
                 return 0;
@@ -66,14 +66,14 @@ namespace IFPV.Values
 
                 switch(this._setting.Type)
                 {
-                    case NetScriptFramework.Skyrim.SettingTypes.Float: this._setting.SetFloat((float)value); break;
-                    case NetScriptFramework.Skyrim.SettingTypes.Int:
-                    case NetScriptFramework.Skyrim.SettingTypes.UInt: this._setting.SetInt((int)value); break;
+                    case NetScriptFramework.SkyrimSE.SettingTypes.Float: this._setting.SetFloat((float)value); break;
+                    case NetScriptFramework.SkyrimSE.SettingTypes.Int:
+                    case NetScriptFramework.SkyrimSE.SettingTypes.UInt: this._setting.SetInt((int)value); break;
                 }
             }
         }
 
-        private NetScriptFramework.Skyrim.Setting _setting = null;
+        private NetScriptFramework.SkyrimSE.Setting _setting = null;
         private double _def = 0;
         private bool _tried = false;
 
@@ -83,7 +83,7 @@ namespace IFPV.Values
                 return;
 
             this._tried = true;
-            this._setting = NetScriptFramework.Skyrim.Setting.FindSettingByName(this.Name, true, true);
+            this._setting = NetScriptFramework.SkyrimSE.Setting.FindSettingByName(this.Name, true, true);
 
             if (this._setting != null)
                 _def = this.CurrentValue;

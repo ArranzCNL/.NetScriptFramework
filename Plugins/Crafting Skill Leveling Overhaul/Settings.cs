@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework.Tools;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace CraftingSkill
 {

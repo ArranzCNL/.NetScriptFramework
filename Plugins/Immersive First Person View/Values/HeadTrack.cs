@@ -42,7 +42,7 @@ namespace IFPV.Values
         {
             get
             {
-                var plr = NetScriptFramework.Skyrim.PlayerCharacter.Instance;
+                var plr = NetScriptFramework.SkyrimSE.PlayerCharacter.Instance;
                 if (plr != null)
                     return plr.IsHeadTrackingEnabled ? 1 : 0;
                 return 0;
@@ -50,7 +50,7 @@ namespace IFPV.Values
 
             set
             {
-                var plr = NetScriptFramework.Skyrim.PlayerCharacter.Instance;
+                var plr = NetScriptFramework.SkyrimSE.PlayerCharacter.Instance;
                 if (plr != null)
                     plr.IsHeadTrackingEnabled = value > 0.0;
             }

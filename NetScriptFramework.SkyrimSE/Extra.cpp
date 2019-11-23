@@ -1,12 +1,12 @@
 #include "Extra2.h"
 #include "Game.h"
+#include "GameAddresses.h"
 #include "Interfaces.h"
-#include "Constants.h"
 #include "Extra.h"
 
 namespace NetScriptFramework
 {
-	namespace Skyrim
+	namespace SkyrimSE
 	{
 		void stack_base::set(int offset, NiPoint3^ vec)
 		{
@@ -32,7 +32,7 @@ namespace NetScriptFramework
 			if (end == nullptr)
 				end = gcnew array<float>(3);
 
-			auto havokWorldPtr = Memory::InvokeCdecl(MCH::FromBase(Constants::TESObjectCELL__GetHavokWorld), p->Cell->Address);
+			auto havokWorldPtr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL__GetHavokWorld), p->Cell->Address);
 			if (havokWorldPtr == System::IntPtr::Zero)
 				return result;
 
@@ -99,7 +99,7 @@ namespace NetScriptFramework
 				}
 				else*/
 				{
-					obj = Memory::InvokeCdecl(MCH::FromBase(Constants::GetNiObjectFromHavokCollidable), obj);
+					obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::GetNiObjectFromHavokCollidable), obj);
 				}
 				r->_obj = obj;
 
@@ -181,7 +181,7 @@ namespace NetScriptFramework
 			auto str = Memory::AllocateString(p->FileName, false);
 			try
 			{
-				result = (System::Int32)(Memory::InvokeCdecl(MCH::FromBase(Constants::RequestModel2), str->Address, p->_alloc->Address, p->_alloc->Address + 0x10).ToInt64() & 0xFF);
+				result = (System::Int32)(Memory::InvokeCdecl(MCH::FromBase(GameAddress::RequestModel2), str->Address, p->_alloc->Address, p->_alloc->Address + 0x10).ToInt64() & 0xFF);
 			}
 			finally
 			{
@@ -204,7 +204,7 @@ namespace NetScriptFramework
 			auto str = Memory::AllocateString(p->FileName, false);
 			try
 			{
-				result = (System::Int32)(Memory::InvokeCdecl(MCH::FromBase(Constants::RequestModel), str->Address, p->_alloc->Address, p->_alloc->Address + 0x10, 0).ToInt64() & 0xFF);
+				result = (System::Int32)(Memory::InvokeCdecl(MCH::FromBase(GameAddress::RequestModel), str->Address, p->_alloc->Address, p->_alloc->Address + 0x10, 0).ToInt64() & 0xFF);
 			}
 			finally
 			{
@@ -330,8 +330,8 @@ namespace NetScriptFramework
 				auto ptr = Memory::ReadPointer(_alloc->Address, false);
 				if (ptr != System::IntPtr::Zero)
 				{
-					auto db = Memory::ReadPointer(MCH::FromBase(Constants::gBSResourceEntryDB), false) + 0xD0;
-					Memory::InvokeCdecl(MCH::FromBase(Constants::FreeRequestedModel), db, ptr);
+					auto db = Memory::ReadPointer(MCH::FromBase(GameAddress::gBSResourceEntryDB), false) + 0xD0;
+					Memory::InvokeCdecl(MCH::FromBase(GameAddress::FreeRequestedModel), db, ptr);
 				}
 
 				delete _alloc;
@@ -377,12 +377,12 @@ namespace NetScriptFramework
 			auto alloc = Memory::AllocateString(fileName, false);
 			try
 			{
-				auto filePtr = Memory::InvokeCdecl(MCH::FromBase(0x14016D3A0), dataHandler->Address, alloc->Address);
+				auto filePtr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm__LookupFormFromFile_fileptr), dataHandler->Address, alloc->Address);
 				if (filePtr == System::IntPtr::Zero) return nullptr;
-				if ((MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14017C860), filePtr)) & 0xFF) == 0) return nullptr;
+				if ((MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm__LookupFormFromFile_1), filePtr)) & 0xFF) == 0) return nullptr;
 				stack10 s;
 				s.set<unsigned int>(0, formId);
-				Memory::InvokeCdecl(MCH::FromBase(0x14017E370), filePtr, s.ptr());
+				Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm__LookupFormFromFile_2), filePtr, s.ptr());
 				formId = s.get<unsigned int>(0);
 				return LookupFormById(formId);
 			}

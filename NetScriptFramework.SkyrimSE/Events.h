@@ -2,9 +2,11 @@
 #pragma warning(push)
 #pragma warning(disable : 4638)
 
+#include "GameAddresses.h"
+
 namespace NetScriptFramework
 {
-    namespace Skyrim
+    namespace SkyrimSE
     {
         /// <summary>
         /// Arguments for OnBarterMenu event.
@@ -605,7 +607,7 @@ namespace NetScriptFramework
             {
                 BarterMenuEventArgs^ args = gcnew BarterMenuEventArgs();
                 args->Entering = true;
-                args->RefHandle = Memory::ReadUInt32(MCH::FromBase(0x142F72ED4), false);
+                args->RefHandle = Memory::ReadUInt32(MCH::FromBase(GameAddress::Event_BarterMenuEventArgs_Before), false);
                 return args;
             }
             
@@ -613,7 +615,7 @@ namespace NetScriptFramework
             {
                 BarterMenuEventArgs^ args = gcnew BarterMenuEventArgs();
                 args->Entering = false;
-                args->RefHandle = Memory::ReadUInt32(MCH::FromBase(0x142F72ED4), false);
+                args->RefHandle = Memory::ReadUInt32(MCH::FromBase(GameAddress::Event_BarterMenuEventArgs_Before), false);
                 return args;
             }
             
@@ -670,11 +672,11 @@ namespace NetScriptFramework
             {
                 if(args->Skip)
                 {
-                ctx->IP = MCH::FromBase(0x1404F5E70 + 0x6A);
+					ctx->IP = MCH::FromBase(GameAddress::Event_CameraStateChanging + 0x6A);
                 }
                 else
                 {
-                ctx->DX = args->NextState != nullptr ? args->NextState->Address : System::IntPtr::Zero;
+					ctx->DX = args->NextState != nullptr ? args->NextState->Address : System::IntPtr::Zero;
                 }
             }
             
@@ -809,19 +811,19 @@ namespace NetScriptFramework
                 auto debug = CrashLog::Debug;
                 if(debug != nullptr)
                 {
-                auto fromPtr = Memory::ReadPointer(ctx->SP + 0x28, false);
-                auto fn = debug->GetFunctionInfo(fromPtr, true);
-                if(fn != nullptr)
-                {
-                switch(fn->Id)
-                {
-                case 19369: args->Reason = MagicEffectRemovalReasons::Activation; break;
-                case 33363: args->Reason = MagicEffectRemovalReasons::CastSpellOrUseMagicItem; break;
-                case 36220: args->Reason = MagicEffectRemovalReasons::Dialogue; break;
-                case 37650: args->Reason = MagicEffectRemovalReasons::Attacking; break;
-                case 41778: args->Reason = MagicEffectRemovalReasons::Attacking; break;
-                }
-                }
+					auto fromPtr = Memory::ReadPointer(ctx->SP + 0x28, false);
+					auto fn = debug->GetFunctionInfo(fromPtr, true);
+					if(fn != nullptr)
+					{
+						switch(fn->Id)
+						{
+							case 19369: args->Reason = MagicEffectRemovalReasons::Activation; break;
+							case 33363: args->Reason = MagicEffectRemovalReasons::CastSpellOrUseMagicItem; break;
+							case 36220: args->Reason = MagicEffectRemovalReasons::Dialogue; break;
+							case 37650: args->Reason = MagicEffectRemovalReasons::Attacking; break;
+							case 41778: args->Reason = MagicEffectRemovalReasons::Attacking; break;
+						}
+					}
                 }
                 return args;
             }
@@ -840,19 +842,19 @@ namespace NetScriptFramework
                 auto debug = CrashLog::Debug;
                 if(debug != nullptr)
                 {
-                auto fromPtr = Memory::ReadPointer(ctx->SP + 0x28, false);
-                auto fn = debug->GetFunctionInfo(fromPtr, true);
-                if(fn != nullptr)
-                {
-                switch(fn->Id)
-                {
-                case 19369: args->Reason = MagicEffectRemovalReasons::Activation; break;
-                case 33363: args->Reason = MagicEffectRemovalReasons::CastSpellOrUseMagicItem; break;
-                case 36220: args->Reason = MagicEffectRemovalReasons::Dialogue; break;
-                case 37650: args->Reason = MagicEffectRemovalReasons::Attacking; break;
-                case 41778: args->Reason = MagicEffectRemovalReasons::Attacking; break;
-                }
-                }
+					auto fromPtr = Memory::ReadPointer(ctx->SP + 0x28, false);
+					auto fn = debug->GetFunctionInfo(fromPtr, true);
+					if(fn != nullptr)
+					{
+						switch(fn->Id)
+						{
+							case 19369: args->Reason = MagicEffectRemovalReasons::Activation; break;
+							case 33363: args->Reason = MagicEffectRemovalReasons::CastSpellOrUseMagicItem; break;
+							case 36220: args->Reason = MagicEffectRemovalReasons::Dialogue; break;
+							case 37650: args->Reason = MagicEffectRemovalReasons::Attacking; break;
+							case 41778: args->Reason = MagicEffectRemovalReasons::Attacking; break;
+						}
+					}
                 }
                 return args;
             }
@@ -896,15 +898,15 @@ namespace NetScriptFramework
             {
                 if(args->Separate)
                 {
-                ShadowCullingBeginEventArgs::__state = 1;
+					ShadowCullingBeginEventArgs::__state = 1;
                 }
                 else
                 {
-                ShadowCullingBeginEventArgs::__state = 0;
-                auto ptr = Memory::ReadPointer(MCH::FromBase(0x143258890), false);
-                Memory::InvokeCdecl(MCH::FromBase(0x140C31BC0), ptr, 0, 0);
+					ShadowCullingBeginEventArgs::__state = 0;
+					auto ptr = Memory::ReadPointer(MCH::FromBase(GameAddress::Event_ShadowCulling_Ptr), false);
+					Memory::InvokeCdecl(MCH::FromBase(GameAddress::Event_ShadowCulling_Memory), ptr, 0, 0);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1412FA330));
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Event_ShadowCulling_Begin));
             }
             
         private: static NetScriptFramework::Event<ShadowCullingEndEventArgs^>^ __handler_ShadowCullingEnd;
@@ -927,9 +929,9 @@ namespace NetScriptFramework
             }
         private: static void __after_ShadowCullingEnd(NetScriptFramework::CPURegisters^ ctx, ShadowCullingEndEventArgs^ args)
             {
-                auto ptr = Memory::ReadPointer(MCH::FromBase(0x143258890), false);
-                if(args->Separate) Memory::InvokeCdecl(MCH::FromBase(0x140C31BC0), ptr, 0, 0);
-                Memory::InvokeCdecl(MCH::FromBase(0x140C31BE0), ptr);
+                auto ptr = Memory::ReadPointer(MCH::FromBase(GameAddress::Event_ShadowCulling_Ptr), false);
+                if(args->Separate) Memory::InvokeCdecl(MCH::FromBase(GameAddress::Event_ShadowCulling_Memory), ptr, 0, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Event_ShadowCulling_End), ptr);
             }
             
         private: static NetScriptFramework::Event<SpendAmmoEventArgs^>^ __handler_SpendAmmo;
@@ -959,15 +961,15 @@ namespace NetScriptFramework
             {
                 if(args->Had && args->ReduceAmount <= 0)
                 {
-                ctx->R14 = Memory::ReadPointer(ctx->AX, false);
-                ctx->IP = MCH::FromBase(0x140624A50 + 0x20A);
-                return;
+					ctx->R14 = Memory::ReadPointer(ctx->AX, false);
+					ctx->IP = MCH::FromBase(GameAddress::Event_SpendAmmo_After + 0x20A);
+					return;
                 }
                 ctx->SI = System::IntPtr((long long)((unsigned int)args->ReduceAmount));
                 if(args->Force)
                 {
-                ctx->R14 = Memory::ReadPointer(ctx->AX, false);
-                ctx->IP = MCH::FromBase(0x140624A50 + 0xD0);
+					ctx->R14 = Memory::ReadPointer(ctx->AX, false);
+					ctx->IP = MCH::FromBase(GameAddress::Event_SpendAmmo_After + 0xD0);
                 }
             }
             
@@ -1093,7 +1095,7 @@ namespace NetScriptFramework
             }
         private: static void __after_UpdatePlayerControls(NetScriptFramework::CPURegisters^ ctx, UpdatePlayerControlsEventArgs^ args)
             {
-                if(Memory::ReadUInt8(ctx->BX + 0x4F, false) == 0) ctx->IP = MCH::FromBase(0x140704FD0 + 0x9A);
+                if(Memory::ReadUInt8(ctx->BX + 0x4F, false) == 0) ctx->IP = MCH::FromBase(GameAddress::Event_UpdatePlayerControls_After + 0x9A);
             }
             
         private: static NetScriptFramework::Event<UpdatePlayerTurnToCameraEventArgs^>^ __handler_UpdatePlayerTurnToCamera;
@@ -1122,17 +1124,17 @@ namespace NetScriptFramework
             {
                 if(args->Had != args->FreeLook)
                 {
-                ctx->DI = System::IntPtr((long long)(args->FreeLook ? 1 : 0));
-                if(args->FreeLook)
-                {
-                ctx->DX = System::IntPtr::Zero;
-                ctx->SI = System::IntPtr((long long)1);
-                }
-                else
-                {
-                ctx->SI = System::IntPtr::Zero;
-                ctx->DX = System::IntPtr((long long)1);
-                }
+					ctx->DI = System::IntPtr((long long)(args->FreeLook ? 1 : 0));
+					if(args->FreeLook)
+					{
+						ctx->DX = System::IntPtr::Zero;
+						ctx->SI = System::IntPtr((long long)1);
+					}
+					else
+					{
+						ctx->SI = System::IntPtr::Zero;
+						ctx->DX = System::IntPtr((long long)1);
+					}
                 }
             }
             
@@ -1166,25 +1168,25 @@ namespace NetScriptFramework
         internal:
             static void InitializeEvents()
             {
-                __handler_BarterMenu = gcnew NetScriptFramework::EventHook<BarterMenuEventArgs^>(NetScriptFramework::EventHookFlags::None, "BarterMenu", gcnew NetScriptFramework::EventHookParameters<BarterMenuEventArgs^>(MCH::FromBase(0x140851BF0), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, BarterMenuEventArgs^>(__before_BarterMenu_1), nullptr), gcnew NetScriptFramework::EventHookParameters<BarterMenuEventArgs^>(MCH::FromBase(0x1408560D9), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, BarterMenuEventArgs^>(__before_BarterMenu_2), nullptr));
-                __handler_CalculateDetection = gcnew NetScriptFramework::EventHook<CalculateDetectionEventArgs^>(NetScriptFramework::EventHookFlags::None, "CalculateDetection", gcnew NetScriptFramework::EventHookParameters<CalculateDetectionEventArgs^>(MCH::FromBase(0x14071A0AB), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, CalculateDetectionEventArgs^>(__before_CalculateDetection), gcnew System::Action<NetScriptFramework::CPURegisters^, CalculateDetectionEventArgs^>(__after_CalculateDetection)));
-                __handler_CameraStateChanging = gcnew NetScriptFramework::EventHook<CameraStateChangingEventArgs^>(NetScriptFramework::EventHookFlags::None, "CameraStateChanging", gcnew NetScriptFramework::EventHookParameters<CameraStateChangingEventArgs^>(MCH::FromBase(0x1404F5E70), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, CameraStateChangingEventArgs^>(__before_CameraStateChanging), gcnew System::Action<NetScriptFramework::CPURegisters^, CameraStateChangingEventArgs^>(__after_CameraStateChanging)));
-                __handler_Frame = gcnew NetScriptFramework::EventHook<FrameEventArgs^>(NetScriptFramework::EventHookFlags::None, "Frame", gcnew NetScriptFramework::EventHookParameters<FrameEventArgs^>(MCH::FromBase(0x1405B31FE), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, FrameEventArgs^>(__before_Frame), nullptr));
-                __handler_InterruptCast = gcnew NetScriptFramework::EventHook<InterruptCastEventArgs^>(NetScriptFramework::EventHookFlags::None, "InterruptCast", gcnew NetScriptFramework::EventHookParameters<InterruptCastEventArgs^>(MCH::FromBase(0x14054CD70), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, InterruptCastEventArgs^>(__before_InterruptCast), nullptr));
-                __handler_MagicCasterFire = gcnew NetScriptFramework::EventHook<MagicCasterFireEventArgs^>(NetScriptFramework::EventHookFlags::None, "MagicCasterFire", gcnew NetScriptFramework::EventHookParameters<MagicCasterFireEventArgs^>(MCH::FromBase(0x14054CC37), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, MagicCasterFireEventArgs^>(__before_MagicCasterFire), nullptr));
-                __handler_MainMenu = gcnew NetScriptFramework::EventHook<MainMenuEventArgs^>(NetScriptFramework::EventHookFlags::None, "MainMenu", gcnew NetScriptFramework::EventHookParameters<MainMenuEventArgs^>(MCH::FromBase(0x1408A7649), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, MainMenuEventArgs^>(__before_MainMenu_1), nullptr), gcnew NetScriptFramework::EventHookParameters<MainMenuEventArgs^>(MCH::FromBase(0x1408A14E0), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, MainMenuEventArgs^>(__before_MainMenu_2), nullptr));
-                __handler_ReduceHUDAmmoCounter = gcnew NetScriptFramework::EventHook<ReduceHUDAmmoCounterEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ReduceHUDAmmoCounter", gcnew NetScriptFramework::EventHookParameters<ReduceHUDAmmoCounterEventArgs^>(MCH::FromBase(0x14074B99A), 7, -5, gcnew System::Func<NetScriptFramework::CPURegisters^, ReduceHUDAmmoCounterEventArgs^>(__before_ReduceHUDAmmoCounter), gcnew System::Action<NetScriptFramework::CPURegisters^, ReduceHUDAmmoCounterEventArgs^>(__after_ReduceHUDAmmoCounter)));
-                __handler_RemoveMagicEffectsWithArchetype = gcnew NetScriptFramework::EventHook<RemoveMagicEffectsWithArchetypeEventArgs^>(NetScriptFramework::EventHookFlags::None, "RemoveMagicEffectsWithArchetype", gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(0x140634D9B), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_1), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_1)), gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(0x140634DBF), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_2), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_2)), gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(0x140628849), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_3), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_3)));
-                __handler_ShadowCullingBegin = gcnew NetScriptFramework::EventHook<ShadowCullingBeginEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ShadowCullingBegin", gcnew NetScriptFramework::EventHookParameters<ShadowCullingBeginEventArgs^>(MCH::FromBase(0x1412F9CFC), 5, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, ShadowCullingBeginEventArgs^>(__before_ShadowCullingBegin), gcnew System::Action<NetScriptFramework::CPURegisters^, ShadowCullingBeginEventArgs^>(__after_ShadowCullingBegin)));
-                __handler_ShadowCullingEnd = gcnew NetScriptFramework::EventHook<ShadowCullingEndEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ShadowCullingEnd", gcnew NetScriptFramework::EventHookParameters<ShadowCullingEndEventArgs^>(MCH::FromBase(0x1412F9D01), 18, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, ShadowCullingEndEventArgs^>(__before_ShadowCullingEnd), gcnew System::Action<NetScriptFramework::CPURegisters^, ShadowCullingEndEventArgs^>(__after_ShadowCullingEnd)));
-                __handler_SpendAmmo = gcnew NetScriptFramework::EventHook<SpendAmmoEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendAmmo", gcnew NetScriptFramework::EventHookParameters<SpendAmmoEventArgs^>(MCH::FromBase(0x140624AD4), 5, -5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendAmmoEventArgs^>(__before_SpendAmmo), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendAmmoEventArgs^>(__after_SpendAmmo)));
-                __handler_SpendMagicCost = gcnew NetScriptFramework::EventHook<SpendMagicCostEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendMagicCost", gcnew NetScriptFramework::EventHookParameters<SpendMagicCostEventArgs^>(MCH::FromBase(0x140542306), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendMagicCostEventArgs^>(__before_SpendMagicCost_1), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendMagicCostEventArgs^>(__after_SpendMagicCost_1)));
-                __handler_SpendPoison = gcnew NetScriptFramework::EventHook<SpendPoisonEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendPoison", gcnew NetScriptFramework::EventHookParameters<SpendPoisonEventArgs^>(MCH::FromBase(0x140631418), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__before_SpendPoison), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__after_SpendPoison)), gcnew NetScriptFramework::EventHookParameters<SpendPoisonEventArgs^>(MCH::FromBase(0x140722409), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__before_SpendPoison_2), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__after_SpendPoison_2)));
-                __handler_UpdateCamera = gcnew NetScriptFramework::EventHook<UpdateCameraEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdateCamera", gcnew NetScriptFramework::EventHookParameters<UpdateCameraEventArgs^>(MCH::FromBase(0x1404F5D9A), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdateCameraEventArgs^>(__before_UpdateCamera), nullptr));
-                __handler_UpdatedPlayerHeadtrack = gcnew NetScriptFramework::EventHook<UpdatedPlayerHeadtrackEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdatedPlayerHeadtrack", gcnew NetScriptFramework::EventHookParameters<UpdatedPlayerHeadtrackEventArgs^>(MCH::FromBase(0x14069F396), 8, 8, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatedPlayerHeadtrackEventArgs^>(__before_UpdatedPlayerHeadtrack), nullptr));
-                __handler_UpdatePlayerControls = gcnew NetScriptFramework::EventHook<UpdatePlayerControlsEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "UpdatePlayerControls", gcnew NetScriptFramework::EventHookParameters<UpdatePlayerControlsEventArgs^>(MCH::FromBase(0x140705058), 6, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatePlayerControlsEventArgs^>(__before_UpdatePlayerControls), gcnew System::Action<NetScriptFramework::CPURegisters^, UpdatePlayerControlsEventArgs^>(__after_UpdatePlayerControls)));
-                __handler_UpdatePlayerTurnToCamera = gcnew NetScriptFramework::EventHook<UpdatePlayerTurnToCameraEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdatePlayerTurnToCamera", gcnew NetScriptFramework::EventHookParameters<UpdatePlayerTurnToCameraEventArgs^>(MCH::FromBase(0x14084FCA3), 7, 7, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatePlayerTurnToCameraEventArgs^>(__before_UpdatePlayerTurnToCamera), gcnew System::Action<NetScriptFramework::CPURegisters^, UpdatePlayerTurnToCameraEventArgs^>(__after_UpdatePlayerTurnToCamera)));
-                __handler_WeaponFireProjectilePosition = gcnew NetScriptFramework::EventHook<WeaponFireProjectilePositionEventArgs^>(NetScriptFramework::EventHookFlags::None, "WeaponFireProjectilePosition", gcnew NetScriptFramework::EventHookParameters<WeaponFireProjectilePositionEventArgs^>(MCH::FromBase(0x1402356D9), 7, 7, gcnew System::Func<NetScriptFramework::CPURegisters^, WeaponFireProjectilePositionEventArgs^>(__before_WeaponFireProjectilePosition), gcnew System::Action<NetScriptFramework::CPURegisters^, WeaponFireProjectilePositionEventArgs^>(__after_WeaponFireProjectilePosition)));
+                __handler_BarterMenu = gcnew NetScriptFramework::EventHook<BarterMenuEventArgs^>(NetScriptFramework::EventHookFlags::None, "BarterMenu", gcnew NetScriptFramework::EventHookParameters<BarterMenuEventArgs^>(MCH::FromBase(GameAddress::Event_BarterMenu_1), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, BarterMenuEventArgs^>(__before_BarterMenu_1), nullptr), gcnew NetScriptFramework::EventHookParameters<BarterMenuEventArgs^>(MCH::FromBase(GameAddress::Event_BarterMenu_2), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, BarterMenuEventArgs^>(__before_BarterMenu_2), nullptr));
+                __handler_CalculateDetection = gcnew NetScriptFramework::EventHook<CalculateDetectionEventArgs^>(NetScriptFramework::EventHookFlags::None, "CalculateDetection", gcnew NetScriptFramework::EventHookParameters<CalculateDetectionEventArgs^>(MCH::FromBase(GameAddress::Event_CalculateDetection), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, CalculateDetectionEventArgs^>(__before_CalculateDetection), gcnew System::Action<NetScriptFramework::CPURegisters^, CalculateDetectionEventArgs^>(__after_CalculateDetection)));
+                __handler_CameraStateChanging = gcnew NetScriptFramework::EventHook<CameraStateChangingEventArgs^>(NetScriptFramework::EventHookFlags::None, "CameraStateChanging", gcnew NetScriptFramework::EventHookParameters<CameraStateChangingEventArgs^>(MCH::FromBase(GameAddress::Event_CameraStateChanging), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, CameraStateChangingEventArgs^>(__before_CameraStateChanging), gcnew System::Action<NetScriptFramework::CPURegisters^, CameraStateChangingEventArgs^>(__after_CameraStateChanging)));
+                __handler_Frame = gcnew NetScriptFramework::EventHook<FrameEventArgs^>(NetScriptFramework::EventHookFlags::None, "Frame", gcnew NetScriptFramework::EventHookParameters<FrameEventArgs^>(MCH::FromBase(GameAddress::Event_Frame), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, FrameEventArgs^>(__before_Frame), nullptr));
+                __handler_InterruptCast = gcnew NetScriptFramework::EventHook<InterruptCastEventArgs^>(NetScriptFramework::EventHookFlags::None, "InterruptCast", gcnew NetScriptFramework::EventHookParameters<InterruptCastEventArgs^>(MCH::FromBase(GameAddress::Event_InterruptCast), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, InterruptCastEventArgs^>(__before_InterruptCast), nullptr));
+                __handler_MagicCasterFire = gcnew NetScriptFramework::EventHook<MagicCasterFireEventArgs^>(NetScriptFramework::EventHookFlags::None, "MagicCasterFire", gcnew NetScriptFramework::EventHookParameters<MagicCasterFireEventArgs^>(MCH::FromBase(GameAddress::Event_MagicCasterFire), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, MagicCasterFireEventArgs^>(__before_MagicCasterFire), nullptr));
+                __handler_MainMenu = gcnew NetScriptFramework::EventHook<MainMenuEventArgs^>(NetScriptFramework::EventHookFlags::None, "MainMenu", gcnew NetScriptFramework::EventHookParameters<MainMenuEventArgs^>(MCH::FromBase(GameAddress::Event_MainMenu_1), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, MainMenuEventArgs^>(__before_MainMenu_1), nullptr), gcnew NetScriptFramework::EventHookParameters<MainMenuEventArgs^>(MCH::FromBase(GameAddress::Event_MainMenu_2), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, MainMenuEventArgs^>(__before_MainMenu_2), nullptr));
+                __handler_ReduceHUDAmmoCounter = gcnew NetScriptFramework::EventHook<ReduceHUDAmmoCounterEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ReduceHUDAmmoCounter", gcnew NetScriptFramework::EventHookParameters<ReduceHUDAmmoCounterEventArgs^>(MCH::FromBase(GameAddress::Event_ReduceHUDAmmoCounter), 7, -5, gcnew System::Func<NetScriptFramework::CPURegisters^, ReduceHUDAmmoCounterEventArgs^>(__before_ReduceHUDAmmoCounter), gcnew System::Action<NetScriptFramework::CPURegisters^, ReduceHUDAmmoCounterEventArgs^>(__after_ReduceHUDAmmoCounter)));
+                __handler_RemoveMagicEffectsWithArchetype = gcnew NetScriptFramework::EventHook<RemoveMagicEffectsWithArchetypeEventArgs^>(NetScriptFramework::EventHookFlags::None, "RemoveMagicEffectsWithArchetype", gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(GameAddress::Event_RemoveMagicEffectsWithArchetype_1), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_1), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_1)), gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(GameAddress::Event_RemoveMagicEffectsWithArchetype_2), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_2), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_2)), gcnew NetScriptFramework::EventHookParameters<RemoveMagicEffectsWithArchetypeEventArgs^>(MCH::FromBase(GameAddress::Event_RemoveMagicEffectsWithArchetype_3), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__before_RemoveMagicEffectsWithArchetype_3), gcnew System::Action<NetScriptFramework::CPURegisters^, RemoveMagicEffectsWithArchetypeEventArgs^>(__after_RemoveMagicEffectsWithArchetype_3)));
+                __handler_ShadowCullingBegin = gcnew NetScriptFramework::EventHook<ShadowCullingBeginEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ShadowCullingBegin", gcnew NetScriptFramework::EventHookParameters<ShadowCullingBeginEventArgs^>(MCH::FromBase(GameAddress::Event_ShadowCullingBegin), 5, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, ShadowCullingBeginEventArgs^>(__before_ShadowCullingBegin), gcnew System::Action<NetScriptFramework::CPURegisters^, ShadowCullingBeginEventArgs^>(__after_ShadowCullingBegin)));
+                __handler_ShadowCullingEnd = gcnew NetScriptFramework::EventHook<ShadowCullingEndEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "ShadowCullingEnd", gcnew NetScriptFramework::EventHookParameters<ShadowCullingEndEventArgs^>(MCH::FromBase(GameAddress::Event_ShadowCullingEnd), 18, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, ShadowCullingEndEventArgs^>(__before_ShadowCullingEnd), gcnew System::Action<NetScriptFramework::CPURegisters^, ShadowCullingEndEventArgs^>(__after_ShadowCullingEnd)));
+                __handler_SpendAmmo = gcnew NetScriptFramework::EventHook<SpendAmmoEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendAmmo", gcnew NetScriptFramework::EventHookParameters<SpendAmmoEventArgs^>(MCH::FromBase(GameAddress::Event_SpendAmmo), 5, -5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendAmmoEventArgs^>(__before_SpendAmmo), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendAmmoEventArgs^>(__after_SpendAmmo)));
+                __handler_SpendMagicCost = gcnew NetScriptFramework::EventHook<SpendMagicCostEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendMagicCost", gcnew NetScriptFramework::EventHookParameters<SpendMagicCostEventArgs^>(MCH::FromBase(GameAddress::Event_SpendMagicCost), 6, 6, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendMagicCostEventArgs^>(__before_SpendMagicCost_1), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendMagicCostEventArgs^>(__after_SpendMagicCost_1)));
+                __handler_SpendPoison = gcnew NetScriptFramework::EventHook<SpendPoisonEventArgs^>(NetScriptFramework::EventHookFlags::None, "SpendPoison", gcnew NetScriptFramework::EventHookParameters<SpendPoisonEventArgs^>(MCH::FromBase(GameAddress::Event_SpendPoison_1), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__before_SpendPoison), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__after_SpendPoison)), gcnew NetScriptFramework::EventHookParameters<SpendPoisonEventArgs^>(MCH::FromBase(GameAddress::Event_SpendPoison_2), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__before_SpendPoison_2), gcnew System::Action<NetScriptFramework::CPURegisters^, SpendPoisonEventArgs^>(__after_SpendPoison_2)));
+                __handler_UpdateCamera = gcnew NetScriptFramework::EventHook<UpdateCameraEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdateCamera", gcnew NetScriptFramework::EventHookParameters<UpdateCameraEventArgs^>(MCH::FromBase(GameAddress::Event_UpdateCamera), 5, 5, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdateCameraEventArgs^>(__before_UpdateCamera), nullptr));
+                __handler_UpdatedPlayerHeadtrack = gcnew NetScriptFramework::EventHook<UpdatedPlayerHeadtrackEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdatedPlayerHeadtrack", gcnew NetScriptFramework::EventHookParameters<UpdatedPlayerHeadtrackEventArgs^>(MCH::FromBase(GameAddress::Event_UpdatedPlayerHeadtrack), 8, 8, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatedPlayerHeadtrackEventArgs^>(__before_UpdatedPlayerHeadtrack), nullptr));
+                __handler_UpdatePlayerControls = gcnew NetScriptFramework::EventHook<UpdatePlayerControlsEventArgs^>(NetScriptFramework::EventHookFlags::AlwaysRun, "UpdatePlayerControls", gcnew NetScriptFramework::EventHookParameters<UpdatePlayerControlsEventArgs^>(MCH::FromBase(GameAddress::Event_UpdatePlayerControls), 6, 0, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatePlayerControlsEventArgs^>(__before_UpdatePlayerControls), gcnew System::Action<NetScriptFramework::CPURegisters^, UpdatePlayerControlsEventArgs^>(__after_UpdatePlayerControls)));
+                __handler_UpdatePlayerTurnToCamera = gcnew NetScriptFramework::EventHook<UpdatePlayerTurnToCameraEventArgs^>(NetScriptFramework::EventHookFlags::None, "UpdatePlayerTurnToCamera", gcnew NetScriptFramework::EventHookParameters<UpdatePlayerTurnToCameraEventArgs^>(MCH::FromBase(GameAddress::Event_UpdatePlayerTurnToCamera), 7, 7, gcnew System::Func<NetScriptFramework::CPURegisters^, UpdatePlayerTurnToCameraEventArgs^>(__before_UpdatePlayerTurnToCamera), gcnew System::Action<NetScriptFramework::CPURegisters^, UpdatePlayerTurnToCameraEventArgs^>(__after_UpdatePlayerTurnToCamera)));
+                __handler_WeaponFireProjectilePosition = gcnew NetScriptFramework::EventHook<WeaponFireProjectilePositionEventArgs^>(NetScriptFramework::EventHookFlags::None, "WeaponFireProjectilePosition", gcnew NetScriptFramework::EventHookParameters<WeaponFireProjectilePositionEventArgs^>(MCH::FromBase(GameAddress::Event_WeaponFireProjectilePosition), 7, 7, gcnew System::Func<NetScriptFramework::CPURegisters^, WeaponFireProjectilePositionEventArgs^>(__before_WeaponFireProjectilePosition), gcnew System::Action<NetScriptFramework::CPURegisters^, WeaponFireProjectilePositionEventArgs^>(__after_WeaponFireProjectilePosition)));
             }
         };
     }

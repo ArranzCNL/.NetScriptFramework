@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework.Tools;
 
-namespace UninterruptedEtherealForm
+namespace UninterruptedInvisibility
 {
-    public sealed class Settings
+    public class Settings
     {
-        [ConfigValue("DontRemove", "Remove mode", "Don't remove ethereal form effect before expiring. 0 = disabled, 1 = don't remove if activating things, 2 = don't remove for any reason.")]
+        [ConfigValue("DontRemove", "Remove mode", "Don't remove invisibility effect before expiring. 0 = disabled, 1 = don't remove if activating things, 2 = don't remove for any reason.")]
         public int DontRemove
         {
             get;
             set;
         } = 1;
 
-        [ConfigValue("SuperInvisibility", "Super invisibility", "If this is enabled then you are completely undetectable while ethereal even if you run into others or fight them.")]
+        [ConfigValue("SuperInvisibility", "Super invisibility", "If this is enabled then you are completely undetectable while invisible even if you run into them or fight them.")]
         public bool SuperInvisibility
         {
             get;
@@ -25,7 +25,7 @@ namespace UninterruptedEtherealForm
 
         public void Load()
         {
-            ConfigFile.LoadFrom(this, "UninterruptedEtherealForm", true);
+            ConfigFile.LoadFrom(this, "UninterruptedInvisibility", true);
         }
     }
 }

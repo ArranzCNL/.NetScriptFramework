@@ -2,9 +2,11 @@
 #pragma warning(push)
 #pragma warning(disable : 4638)
 
+#include "GameAddresses.h"
+
 namespace NetScriptFramework
 {
-    namespace Skyrim
+    namespace SkyrimSE
     {
         /// <summary>
         /// Game library header.
@@ -97,7 +99,12 @@ namespace NetScriptFramework
             {
                 System::Boolean __clrcall get() override
                 {
-                    return GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] == 62 && GameVersion[3] == 0;
+#ifdef _SKYRIMSE_VER_1_5_62
+                    return GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] == 62  && GameVersion[3] == 0;
+#endif
+#ifdef _SKYRIMSE_VER_1_5_73
+					return GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80;
+#endif
                 }
             }
             
@@ -112,7 +119,7 @@ namespace NetScriptFramework
             {
                 System::Int32 __clrcall get() override
                 {
-                    return 9;
+                    return 10;
                 }
             }
             

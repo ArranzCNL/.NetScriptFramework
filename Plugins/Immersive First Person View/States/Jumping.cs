@@ -33,7 +33,7 @@ namespace IFPV.States
             if (actor == null)
                 return false;
             var state = actor.MovementState;
-            return state == NetScriptFramework.Skyrim.bhkCharacterStateTypes.Jumping || state == NetScriptFramework.Skyrim.bhkCharacterStateTypes.InAir;
+            return state == NetScriptFramework.SkyrimSE.bhkCharacterStateTypes.Jumping || state == NetScriptFramework.SkyrimSE.bhkCharacterStateTypes.InAir;
         }
     }
 }

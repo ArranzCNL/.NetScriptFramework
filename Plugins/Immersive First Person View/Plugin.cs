@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace IFPV
 {
@@ -30,7 +30,7 @@ namespace IFPV
         {
             get
             {
-                return 5;
+                return 6;
             }
         }
 
@@ -88,7 +88,7 @@ namespace IFPV
         {
             var game = NetScriptFramework.Main.Game;
             var debug = CrashLog.Debug;
-            if (game == null || game.LibraryVersion < 9)
+            if (game == null || game.LibraryVersion < 10)
                 throw new InvalidOperationException(this.Name + " requires a newer version of .NET Script Framework!");
             if (debug == null)
                 throw new InvalidOperationException(this.Name + " can not run without the debug library!");
@@ -150,28 +150,33 @@ namespace IFPV
 
         private void init()
         {
+            // Setup GameOffset - Updated PrepareFunction & InstallHook to take this value, I didn't update directly incase some use a different Offset.
+            int GameOffset = 0x0; // Everything is based from 1_5_62
+            var GameVersion = NetScriptFramework.Main.Game.GameVersion; // Get the game version
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80) GameOffset = 0x1F0; // Check for game version 1_5_73 and 1_5_80, update GameOffset
+
             this.Timer = new NetScriptFramework.Tools.Timer();
             this.Timer.Start();
 
             this.Settings = new Settings();
             this.Settings.Load();
 
-            this.PlayerControls_IsCamSwitchControlsEnabled = this.PrepareFunction("player camera switch controls check", 41263, 0);
-            this.NiNode_ctor = this.PrepareFunction("ninode ctor", 68936, 0);
-            this.MagicNodeArt1 = this.PrepareFunction("magic node art 1", 33403, 0x6F);
-            this.MagicNodeArt2 = this.PrepareFunction("magic node art 2", 33391, 0x64);
-            this.MagicNodeArt3 = this.PrepareFunction("magic node art 3", 33375, 0xF5);
-            this.MagicNodeArt4 = this.PrepareFunction("magic node art 4", 33683, 0x63);
-            this.ActorTurnX = this.PrepareFunction("actor turn x", 36603, 0);
-            this.ActorTurnZ = this.PrepareFunction("actor turn z", 36250, 0);
-            this.SwitchSkeleton = this.PrepareFunction("switch skeleton", 39401, 0);
-            this.Actor_GetMoveDirection = this.PrepareFunction("actor move direction", 36935, 0);
+            this.PlayerControls_IsCamSwitchControlsEnabled = this.PrepareFunction("player camera switch controls check", 41263, 0, GameOffset);
+            this.NiNode_ctor = this.PrepareFunction("ninode ctor", 68936, 0, GameOffset);
+            this.MagicNodeArt1 = this.PrepareFunction("magic node art 1", 33403, 0x6F, GameOffset);
+            this.MagicNodeArt2 = this.PrepareFunction("magic node art 2", 33391, 0x64, GameOffset);
+            this.MagicNodeArt3 = this.PrepareFunction("magic node art 3", 33375, 0xF5, GameOffset);
+            this.MagicNodeArt4 = this.PrepareFunction("magic node art 4", 33683, 0x63, GameOffset);
+            this.ActorTurnX = this.PrepareFunction("actor turn x", 36603, 0, GameOffset);
+            this.ActorTurnZ = this.PrepareFunction("actor turn z", 36250, 0, GameOffset);
+            this.SwitchSkeleton = this.PrepareFunction("switch skeleton", 39401, 0, GameOffset);
+            this.Actor_GetMoveDirection = this.PrepareFunction("actor move direction", 36935, 0, GameOffset);
 
             this.CameraMain = new CameraMain(this);
 
             Events.OnFrame.Register(e =>
             {
-                var main = NetScriptFramework.Skyrim.Main.Instance;
+                var main = NetScriptFramework.SkyrimSE.Main.Instance;
                 if (main != null)
                 {
 #if PROFILING
@@ -303,7 +308,7 @@ namespace IFPV
                 }
             });
 
-            this.InstallHook("magic fire node art", 33361, 0x7E, 7, "41 FF 90 78 03 00 00", ctx =>
+            this.InstallHook("magic fire node art", 33361, 0x7E, 7, "41 FF 90 78 03 00 00", GameOffset, ctx =>
             {
                 if (this.CameraMain == null || !this.CameraMain.IsInitialized || !this.CameraMain.WasUsingFirstPersonArms)
                     return;
@@ -314,7 +319,7 @@ namespace IFPV
                     ctx.DX = new IntPtr((long)1);
             });
 
-            this.InstallHook("magic fire node", 33361, 0, 6, "40 57 48 83 EC 20", ctx =>
+            this.InstallHook("magic fire node", 33361, 0, 6, "40 57 48 83 EC 20", GameOffset, ctx =>
             {
                 if (this.CameraMain == null || !this.CameraMain.IsInitialized || !this.CameraMain.WasUsingFirstPersonArms)
                     return;
@@ -333,7 +338,7 @@ namespace IFPV
             });
 
             // Block character model fading out
-            this.InstallHook("block fade out", 49899, 0x3C, 6, "4C 8B F2 48 8B F9", ctx =>
+            this.InstallHook("block fade out", 49899, 0x3C, 6, "4C 8B F2 48 8B F9", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized && this.CameraMain.Values.BlockPlayerFadeOut.CurrentValue >= 0.5)
                 {
@@ -343,7 +348,7 @@ namespace IFPV
             });
 
             // Overwrite the turn part
-            this.InstallHook("actor turn overwrite", 49968, 0xBB, 0x2E, "F3 0F 10 8B D4 00 00 00", ctx =>
+            this.InstallHook("actor turn overwrite", 49968, 0xBB, 0x2E, "F3 0F 10 8B D4 00 00 00", GameOffset, ctx =>
             {
                 var third = MemoryObject.FromAddress<ThirdPersonState>(ctx.BX);
                 var actor = MemoryObject.FromAddress<Actor>(ctx.AX);
@@ -357,13 +362,13 @@ namespace IFPV
             if (Settings.Instance.ReplaceDefaultCamera)
             {
                 // Make sure we always use the custom code instead of allowing min zoom to enter first person.
-                this.InstallHook("replace zoom #1", 49970, 0x1E1, 5, "E8", null, ctx =>
+                this.InstallHook("replace zoom #1", 49970, 0x1E1, 5, "E8", GameOffset, null, ctx =>
                 {
                     ctx.AX = IntPtr.Zero;
                 });
 
                 // Custom zoom
-                this.InstallHook("replace zoom #1", 49970, 0x22F, 7, "48 8B 8B E8 01 00 00", ctx =>
+                this.InstallHook("replace zoom #1", 49970, 0x22F, 7, "48 8B 8B E8 01 00 00", GameOffset, ctx =>
                 {
                     IntPtr cptr = Memory.ReadPointer(ctx.AX);
                     IntPtr dptr = Memory.ReadPointer(ctx.BX + 0x1E8);
@@ -378,11 +383,11 @@ namespace IFPV
 
                 // Dragon and horse must use regular toggle pov handler
                 {
-                    var ptr = PrepareFunction("dragon toggle pov", 32363, 0x1F);
+                    var ptr = PrepareFunction("dragon toggle pov", 32363, 0x1F, GameOffset);
                     if (!Memory.VerifyBytes(ptr, "74 52", true))
                         throw new InvalidOperationException("Couldn't verify byte pattern for 'dragon toggle pov'!");
                     Memory.WriteUInt8(ptr, 0xEB, true);
-                    ptr = PrepareFunction("horse toggle pov", 49832, 0x1F);
+                    ptr = PrepareFunction("horse toggle pov", 49832, 0x1F, GameOffset);
                     if (!Memory.VerifyBytes(ptr, "74 52", true))
                         throw new InvalidOperationException("Couldn't verify byte pattern for 'horse toggle pov'!");
                     Memory.WriteUInt8(ptr, 0xEB, true);
@@ -390,14 +395,14 @@ namespace IFPV
 
                 // Don't toggle pov from zoom delayed parameter
                 {
-                    var ptr = PrepareFunction("zoom delayed toggle pov", 49977, 0x291);
+                    var ptr = PrepareFunction("zoom delayed toggle pov", 49977, 0x291, GameOffset);
                     if (!Memory.VerifyBytes(ptr, "74 1C", true))
                         throw new InvalidOperationException("Couldn't verify byte pattern for 'zoom delayed toggle pov'!");
                     Memory.WriteUInt8(ptr, 0xEB, true);
                 }
 
                 // Toggle POV hotkey was pressed
-                this.InstallHook("toggle pov", 49970, 0xD5, 5, "E8", null, ctx =>
+                this.InstallHook("toggle pov", 49970, 0xD5, 5, "E8", GameOffset, null, ctx =>
                 {
                     // Skip default action
                     ctx.AX = new IntPtr((long)0);
@@ -407,7 +412,7 @@ namespace IFPV
                 });
 
                 // Replace forced first person mode from papyrus or other scripted events.
-                this.InstallHook("replace first person", 49858, 0, 6, "40 53 48 83 EC 20", ctx =>
+                this.InstallHook("replace first person", 49858, 0, 6, "40 53 48 83 EC 20", GameOffset, ctx =>
                 {
                     if (this.CameraMain == null || !this.CameraMain.IsInitialized)
                         return;
@@ -459,7 +464,7 @@ namespace IFPV
                 });
             }
 
-            this.InstallHook("fix crosshair pick", 39534, 0x159, 10, "F3 0F 58 45 E8 F3 0F 11 45 D8", ctx =>
+            this.InstallHook("fix crosshair pick", 39534, 0x159, 10, "F3 0F 58 45 E8 F3 0F 11 45 D8", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized && this.CameraMain.IsEnabled)
                 {
@@ -474,7 +479,7 @@ namespace IFPV
                 }
             });
 
-            this.InstallHook("fix look sensitivity", 41275, 0x38D, 0xE, "75 0E", ctx =>
+            this.InstallHook("fix look sensitivity", 41275, 0x38D, 0xE, "75 0E", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized)
                 {
@@ -486,7 +491,7 @@ namespace IFPV
                 }
             }, null, true);
 
-            this.InstallHook("switch skeleton override", 39401, 0, 7, "40 55 56 48 83 EC 78", ctx =>
+            this.InstallHook("switch skeleton override", 39401, 0, 7, "40 55 56 48 83 EC 78", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized)
                 {
@@ -498,7 +503,7 @@ namespace IFPV
                 }
             });
 
-            this.InstallHook("fix bound node update", 18683, 0x7C, 6, "FF 90 68 04 00 00", ctx =>
+            this.InstallHook("fix bound node update", 18683, 0x7C, 6, "FF 90 68 04 00 00", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized && this.CameraMain.IsEnabled)
                 {
@@ -509,7 +514,7 @@ namespace IFPV
                 }
             });
 
-            this.InstallHook("fix spine twist", 59246, 0x75, 5, "48 83 C4 20 5F", ctx =>
+            this.InstallHook("fix spine twist", 59246, 0x75, 5, "48 83 C4 20 5F", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized
                 && System.Threading.Interlocked.CompareExchange(ref _is_spine, 0, 0) > 0
@@ -517,7 +522,7 @@ namespace IFPV
                     this.CameraMain.FixSpineTwist(ctx.DI);
             });
 
-            this.InstallHook("player update animation", 39445, 0x97, 5, "E8", ctx =>
+            this.InstallHook("player update animation", 39445, 0x97, 5, "E8", GameOffset, ctx =>
             {
                 System.Threading.Interlocked.Increment(ref _is_spine);
             },
@@ -525,17 +530,17 @@ namespace IFPV
             {
                 System.Threading.Interlocked.Decrement(ref _is_spine);
             });
-            this.InstallHook("player control inc counter", 41259, 0, 5, "48 89 5C 24 08", ctx =>
+            this.InstallHook("player control inc counter", 41259, 0, 5, "48 89 5C 24 08", GameOffset, ctx =>
             {
                 System.Threading.Interlocked.Increment(ref _is_spine);
             });
 
-            this.InstallHook("player controls dec counter", 41259, 0x241, 5, "48 83 C4 30 5F", ctx =>
+            this.InstallHook("player controls dec counter", 41259, 0x241, 5, "48 83 C4 30 5F", GameOffset, ctx =>
             {
                 System.Threading.Interlocked.Decrement(ref _is_spine);
             });
 
-            this.InstallHook("player movement controller type", 40937, 0x2EA, 6, "FF 90 88 03 00 00", null, ctx =>
+            this.InstallHook("player movement controller type", 40937, 0x2EA, 6, "FF 90 88 03 00 00", GameOffset, null, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized)
                 {
@@ -544,7 +549,7 @@ namespace IFPV
                 }
             });
 
-            this.InstallHook("before draw", 35560, 0x199, 7, "83 8F F4 00 00 00 01", ctx =>
+            this.InstallHook("before draw", 35560, 0x199, 7, "83 8F F4 00 00 00 01", GameOffset, ctx =>
             {
                 if (this.CameraMain != null && this.CameraMain.IsInitialized && this.CameraMain.IsEnabled)
                     this.CameraMain.UpdateSkeletonWithLastParameters();
@@ -555,15 +560,17 @@ namespace IFPV
         private bool _had_free_look = true;
         private int _is_spine = 0;
 
-        private void InstallHook(string name, ulong vid, int offset, int length, string hex, Action<CPURegisters> func, Action<CPURegisters> after = null, bool skip = false)
+        private void InstallHook(string name, ulong vid, int offset, int length, string hex, int addrOffset, Action<CPURegisters> func, Action<CPURegisters> after = null, bool skip = false)
         {
             var fn = CrashLog.Debug.GetFunctionInfo(vid);
+
             if (fn == null)
                 throw new InvalidOperationException(this.Name + " couldn't find '" + name + "' function in debug library! Plugin must be updated manually.");
 
-            IntPtr addr = new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin + (uint)offset));
+            IntPtr addr = new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin + (uint)offset) - (uint)addrOffset) );
+            String strAddress = fn.ShortName;
             if (!string.IsNullOrEmpty(hex) && !Memory.VerifyBytes(addr, hex))
-                throw new InvalidOperationException(this.Name + " couldn't match function '" + name + "' bytes! Plugin must be updated manually or there is a conflict with another plugin.");
+                throw new InvalidOperationException(this.Name + " couldn't match function '" + name + "' bytes! Plugin must be updated manually or there is a conflict with another plugin. " + strAddress);
 
             Memory.WriteHook(new HookParameters()
             {
@@ -575,13 +582,14 @@ namespace IFPV
             });
         }
 
-        private IntPtr PrepareFunction(string name, ulong vid, int offset)
+        private IntPtr PrepareFunction(string name, ulong vid, int offset, int addrOffset)
         {
             var fn = CrashLog.Debug.GetFunctionInfo(vid);
+
             if (fn == null)
                 throw new InvalidOperationException(this.Name + " couldn't find '" + name + "' function in debug library! Plugin must be updated manually.");
 
-            return new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin + (ulong)offset));
+            return new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin + (ulong)offset) - (ulong)addrOffset) );
         }
     }
 }

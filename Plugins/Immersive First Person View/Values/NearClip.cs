@@ -24,14 +24,14 @@ namespace IFPV.Values
         }
 
         private double? _defaultValue = null;
-        private static NetScriptFramework.Skyrim.Setting _setting = null;
+        private static NetScriptFramework.SkyrimSE.Setting _setting = null;
 
         private void UpdateDefaultValue()
         {
             if (this._defaultValue.HasValue)
                 return;
 
-            _setting = NetScriptFramework.Skyrim.Setting.FindSettingByName("fNearDistance:Display", true, true);
+            _setting = NetScriptFramework.SkyrimSE.Setting.FindSettingByName("fNearDistance:Display", true, true);
             if (_setting == null)
                 throw new InvalidOperationException("Failed to find fNearDistance setting!");
 

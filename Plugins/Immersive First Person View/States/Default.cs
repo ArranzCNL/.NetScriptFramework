@@ -271,7 +271,7 @@ namespace IFPV.States
 
             if(hadX || hadY)
             {
-                var third = update.GameCameraState.As<NetScriptFramework.Skyrim.ThirdPersonState>();
+                var third = update.GameCameraState.As<NetScriptFramework.SkyrimSE.ThirdPersonState>();
                 if (third != null && NetScriptFramework.Memory.ReadUInt8(third.Address + 0xDC) == 0)
                     update.CameraMain.HandleActorTurnToCamera(update.Target.Actor, third, false);
             }

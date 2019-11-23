@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
-namespace UninterruptedEtherealForm
+namespace UninterruptedInvisibility
 {
-    public sealed class UninterruptedEtherealFormPlugin : Plugin
+    public sealed class UninterruptedInvisibilityPlugin : Plugin
     {
         public override string Key
         {
             get
             {
-                return "un_ethereal";
+                return "un_invis";
             }
         }
 
@@ -22,7 +22,7 @@ namespace UninterruptedEtherealForm
         {
             get
             {
-                return "Uninterrupted Ethereal Form";
+                return "Uninterrupted Invisibility";
             }
         }
 
@@ -30,7 +30,7 @@ namespace UninterruptedEtherealForm
         {
             get
             {
-                return 1;
+                return 2;
             }
         }
 
@@ -51,7 +51,7 @@ namespace UninterruptedEtherealForm
         protected override bool Initialize(bool loadedAny)
         {
             var game = NetScriptFramework.Main.Game;
-            if (game == null || game.LibraryVersion < 7)
+            if (game == null || game.LibraryVersion < 10)
                 throw new InvalidOperationException(this.Name + " requires a newer version of .NET Script Framework. You must update the framework to use this plugin.");
 
             this._Initialize();
@@ -64,23 +64,23 @@ namespace UninterruptedEtherealForm
             this.Settings = new Settings();
             this.Settings.Load();
 
-            if (this.Settings.SuperInvisibility)
+            if(this.Settings.SuperInvisibility)
             {
                 Events.OnCalculateDetection.Register(e =>
                 {
                     Actor actor = e.TargetActor;
-                    if (actor != null && actor.FindFirstEffectWithArchetype(Archetypes.Etherealize, false) != null)
+                    if (actor != null && actor.FindFirstEffectWithArchetype(Archetypes.Invisibility, false) != null)
                         e.ResultValue = -1000;
                 }, 1);
             }
 
-            if (this.Settings.DontRemove > 0)
+            if(this.Settings.DontRemove > 0)
             {
                 int mode = this.Settings.DontRemove;
                 if (mode == 1)
                     Events.OnRemoveMagicEffectsWithArchetype.Register(e =>
                     {
-                        if (e.Archetype != Archetypes.Etherealize || e.Reason != MagicEffectRemovalReasons.Activation)
+                        if (e.Archetype != Archetypes.Invisibility || e.Reason != MagicEffectRemovalReasons.Activation)
                             return;
 
                         e.Skip = true;
@@ -88,7 +88,7 @@ namespace UninterruptedEtherealForm
                 else if (mode == 2)
                     Events.OnRemoveMagicEffectsWithArchetype.Register(e =>
                     {
-                        if (e.Archetype != Archetypes.Etherealize || e.Reason == MagicEffectRemovalReasons.Expired)
+                        if (e.Archetype != Archetypes.Invisibility || e.Reason == MagicEffectRemovalReasons.Expired)
                             return;
 
                         e.Skip = true;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace BlinkSpell
 {
@@ -38,7 +38,7 @@ namespace BlinkSpell
         {
             get
             {
-                return 3;
+                return 4;
             }
         }
 
@@ -63,7 +63,7 @@ namespace BlinkSpell
         protected override bool Initialize(bool loadedAny)
         {
             var game = NetScriptFramework.Main.Game;
-            if (game == null || game.LibraryVersion < 5)
+            if (game == null || game.LibraryVersion < 10)
                 throw new InvalidOperationException(this.Name + " requires newer version of .NET script framework! Go update.");
 
             this._Initialize();

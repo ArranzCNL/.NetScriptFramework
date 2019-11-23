@@ -21,7 +21,7 @@ namespace IFPV.States
             if (!update.CameraMain.IsEnabled)
                 return false;
 
-            return update.GameCameraState.Id == NetScriptFramework.Skyrim.TESCameraStates.Bleedout;
+            return update.GameCameraState.Id == NetScriptFramework.SkyrimSE.TESCameraStates.Bleedout;
         }
     }
 }

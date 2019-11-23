@@ -56,7 +56,7 @@ namespace IFPV.States
             kw = Settings.Instance.CustomPassengerMagicKeyword;
             if(!string.IsNullOrEmpty(kw))
             {
-                NetScriptFramework.Skyrim.MagicItem item = null;
+                NetScriptFramework.SkyrimSE.MagicItem item = null;
                 if (actor.HasMagicEffectWithKeywordText(kw, ref item))
                     return true;
             }

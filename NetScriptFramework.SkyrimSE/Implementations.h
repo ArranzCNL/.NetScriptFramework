@@ -4,10 +4,11 @@
 
 #include "Interfaces.h"
 #include "Extra.h"
+#include "GameAddresses.h"
 
 namespace NetScriptFramework
 {
-    namespace Skyrim
+    namespace SkyrimSE
     {
         /// <summary>
         /// Implementation of interface <see cref="BaseFormComponent"/>.
@@ -216,7 +217,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -619,16 +620,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -649,16 +650,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -1283,16 +1284,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -1338,16 +1339,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -1393,16 +1394,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -1448,16 +1449,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -1535,7 +1536,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     if(this->PauseGameWorld != 0) return true;
-                    if(Memory::ReadUInt8(MCH::FromBase(0x142F4DB74+2), false) != 0) return true;
+                    if(Memory::ReadUInt8(MCH::FromBase(GameAddress::Main_IsGamePaused_Get+2), false) != 0) return true;
                     auto menuManager = MenuManager::Instance;
                     if(menuManager != nullptr && menuManager->PauseGameCounter > 0) return true;
                     return false;
@@ -1928,7 +1929,7 @@ namespace NetScriptFramework
             /// </summary>
             virtual void __clrcall Lock1() sealed
             {
-                Memory::InvokeCdecl(MCH::FromBase(0x140132DC0), this->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Mutex_Lock1), this->Address, 0);
             }
             
             /// <summary>
@@ -1994,7 +1995,7 @@ namespace NetScriptFramework
                 StringRefHolder^ str = gcnew StringRefHolder(name);
                 try
                 {
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140EBDE90), this->Address, str->AddressOf)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MenuManager_IsMenuOpen), this->Address, str->AddressOf)) & 0xFF) != 0;
                 }
                 finally
                 {
@@ -2077,7 +2078,7 @@ namespace NetScriptFramework
             {
                 SettingTypes __clrcall get() sealed
                 {
-                    return (SettingTypes)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140D28BB0), Memory::ReadPointer(this->Address + 0x10, false))) & 0x7FFFFFFF);
+                    return (SettingTypes)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Setting_Type_Get), Memory::ReadPointer(this->Address + 0x10, false))) & 0x7FFFFFFF);
                 }
             }
             
@@ -2179,7 +2180,7 @@ namespace NetScriptFramework
                 auto str = Memory::AllocateString(value, false);
                 try
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140D28980), this->Address, str->Address);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Setting_SetString), this->Address, str->Address);
                 }
                 finally
                 {
@@ -2432,16 +2433,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -2487,16 +2488,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -2542,16 +2543,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -2686,16 +2687,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -2741,16 +2742,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -2796,7 +2797,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x140945CD0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActiveEffect_Caster_Get), 0, 0, self->Address));
                 }
             }
             
@@ -2808,7 +2809,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x140945D40), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActiveEffect_Target_Get), 0, 0, self->Address));
                 }
             }
             
@@ -2818,7 +2819,7 @@ namespace NetScriptFramework
             virtual void __clrcall Dispel() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140948090), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActiveEffect_Dispel), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -2829,7 +2830,7 @@ namespace NetScriptFramework
                 EffectSetting^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<EffectSetting^>(Memory::InvokeCdecl(MCH::FromBase(0x1409480A0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<EffectSetting^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActiveEffect_BaseEffect_Get), 0, 0, self->Address));
                 }
             }
             
@@ -2958,7 +2959,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -2969,7 +2970,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3113,7 +3114,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3124,7 +3125,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3268,7 +3269,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3279,7 +3280,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3446,7 +3447,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3457,7 +3458,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3612,7 +3613,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3623,7 +3624,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3779,7 +3780,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3790,7 +3791,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -3946,7 +3947,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -3957,7 +3958,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -4101,7 +4102,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -4112,7 +4113,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -4268,7 +4269,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -4279,7 +4280,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -4435,7 +4436,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -4446,7 +4447,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -4590,7 +4591,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -4601,7 +4602,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -4847,7 +4848,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -4858,7 +4859,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5027,7 +5028,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -5038,7 +5039,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5235,7 +5236,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -5246,7 +5247,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5402,7 +5403,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -5413,7 +5414,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5586,7 +5587,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -5597,7 +5598,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5741,7 +5742,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -5752,7 +5753,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -5974,7 +5975,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -6110,7 +6111,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -6121,7 +6122,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -6254,7 +6255,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -6390,7 +6391,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -6401,7 +6402,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -6545,7 +6546,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -6556,7 +6557,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -6700,7 +6701,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -6711,7 +6712,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -6910,7 +6911,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -6921,7 +6922,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -7065,7 +7066,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -7076,7 +7077,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -7275,7 +7276,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -7286,7 +7287,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -7486,7 +7487,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -7497,7 +7498,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -7818,7 +7819,7 @@ namespace NetScriptFramework
                 	if (entries != nullptr)
                     {
                 	int size = MemoryObject::SizeOf<TESLeveledList::Entry^>();
-                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x140C02450), MCH::FromBase(0x141EE4280), size * entries->Count + 8, 0);
+                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_1), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), size * entries->Count + 8, 0);
                 	Memory::WriteInt64(ptr, entries->Count, false);
                 	ptr = ptr + 8;
                 	for (int i = 0; i < entries->Count; i++)
@@ -7851,9 +7852,9 @@ namespace NetScriptFramework
                     for each(auto ent in old)
                     {
                         auto data = ent->Extra;
-                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), data->Address, 0);
+                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), data->Address, 0);
                     }
-                    		Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), ptr2 - 8, 0);
+                    		Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), ptr2 - 8, 0);
                 }
             }
         };
@@ -7998,7 +7999,7 @@ namespace NetScriptFramework
                 	if (entries != nullptr)
                     {
                 	int size = MemoryObject::SizeOf<TESLeveledList::Entry^>();
-                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x140C02450), MCH::FromBase(0x141EE4280), size * entries->Count + 8, 0);
+                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_1), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), size * entries->Count + 8, 0);
                 	Memory::WriteInt64(ptr, entries->Count, false);
                 	ptr = ptr + 8;
                 	for (int i = 0; i < entries->Count; i++)
@@ -8031,9 +8032,9 @@ namespace NetScriptFramework
                     for each(auto ent in old)
                     {
                         auto data = ent->Extra;
-                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), data->Address, 0);
+                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), data->Address, 0);
                     }
-                    		Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), ptr2 - 8, 0);
+                    		Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), ptr2 - 8, 0);
                 }
             }
             
@@ -8142,7 +8143,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -8153,7 +8154,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -8326,7 +8327,7 @@ namespace NetScriptFramework
                 	if (entries != nullptr)
                     {
                 	int size = MemoryObject::SizeOf<TESLeveledList::Entry^>();
-                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x140C02450), MCH::FromBase(0x141EE4280), size * entries->Count + 8, 0);
+                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_1), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), size * entries->Count + 8, 0);
                 	Memory::WriteInt64(ptr, entries->Count, false);
                 	ptr = ptr + 8;
                 	for (int i = 0; i < entries->Count; i++)
@@ -8359,9 +8360,9 @@ namespace NetScriptFramework
                     for each(auto ent in old)
                     {
                         auto data = ent->Extra;
-                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), data->Address, 0);
+                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), data->Address, 0);
                     }
-                    		Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), ptr2 - 8, 0);
+                    		Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), ptr2 - 8, 0);
                 }
             }
             
@@ -8470,7 +8471,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -8481,7 +8482,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -8654,7 +8655,7 @@ namespace NetScriptFramework
                 	if (entries != nullptr)
                     {
                 	int size = MemoryObject::SizeOf<TESLeveledList::Entry^>();
-                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x140C02450), MCH::FromBase(0x141EE4280), size * entries->Count + 8, 0);
+                	auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_1), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), size * entries->Count + 8, 0);
                 	Memory::WriteInt64(ptr, entries->Count, false);
                 	ptr = ptr + 8;
                 	for (int i = 0; i < entries->Count; i++)
@@ -8687,9 +8688,9 @@ namespace NetScriptFramework
                     for each(auto ent in old)
                     {
                         auto data = ent->Extra;
-                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), data->Address, 0);
+                        if(data != nullptr) Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), data->Address, 0);
                     }
-                    		Memory::InvokeCdecl(MCH::FromBase(0x140C02750), MCH::FromBase(0x141EE4280), ptr2 - 8, 0);
+                    		Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESLeveledList_SetLeveledListEntries_2), MCH::FromBase(GameAddress::GameAddress::gMemoryManager), ptr2 - 8, 0);
                 }
             }
             
@@ -8798,7 +8799,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -8809,7 +8810,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -8982,7 +8983,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -8993,7 +8994,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -9201,7 +9202,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -9212,7 +9213,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -9385,7 +9386,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -9396,7 +9397,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -9555,7 +9556,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -9566,7 +9567,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -9619,7 +9620,7 @@ namespace NetScriptFramework
                 if(x < -32768 || x > 0x7FFF || y < -32768 || y > 0x7FFF) return nullptr;
                 System::UInt32 mask = (System::UInt32)x << 16;
                 mask |= (System::UInt32)y;
-                return MemoryObject::FromAddress<TESObjectCELL^>(Memory::InvokeCdecl(MCH::FromBase(0x140165960), self->Address, mask));
+                return MemoryObject::FromAddress<TESObjectCELL^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESWorldSpace_GetCellByCoordinates), self->Address, mask));
             }
             
             /// <summary>
@@ -9631,7 +9632,7 @@ namespace NetScriptFramework
                 stack10 s;
                 s.set<float>(0, x);
                 s.set<float>(4, y);
-                return MemoryObject::FromAddress<TESObjectCELL^>(Memory::InvokeCdecl(MCH::FromBase(0x1402B3A50), self->Address, s.ptr()));
+                return MemoryObject::FromAddress<TESObjectCELL^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESWorldSpace_GetCellByPosition), self->Address, s.ptr()));
             }
         };
         
@@ -9658,7 +9659,7 @@ namespace NetScriptFramework
             virtual TESObjectCELL^ __clrcall GetCell(System::Int32 x, System::Int32 y) sealed
             {
                 auto self = this;
-                auto gridPtr = Memory::InvokeCdecl(MCH::FromBase(0x1401D5050), self->Address, x, y);
+                auto gridPtr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::GridCellArray_GetCell), self->Address, x, y);
                 if(gridPtr != System::IntPtr::Zero) gridPtr = Memory::ReadPointer(gridPtr, false);
                 return MemoryObject::FromAddress<TESObjectCELL^>(gridPtr);
             }
@@ -9699,7 +9700,7 @@ namespace NetScriptFramework
             {
                 System::Int32 __clrcall get() sealed
                 {
-                    return Memory::ReadInt32(MCH::FromBase(0x141DD9E28) + 8, false);
+                    return Memory::ReadInt32(MCH::FromBase(GameAddress::TES_GridsToLoad_Get) + 8, false);
                 }
             }
             
@@ -10379,16 +10380,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -10425,7 +10426,7 @@ namespace NetScriptFramework
             virtual void __clrcall Activate() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140DB3390), self->Address, 1);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::bhkRigidBody_Activate), self->Address, 1);
             }
             
             /// <summary>
@@ -10434,7 +10435,7 @@ namespace NetScriptFramework
             virtual void __clrcall Deactivate() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140DB3390), self->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::bhkRigidBody_Activate), self->Address, 0);
             }
             
             /// <summary>
@@ -10446,7 +10447,7 @@ namespace NetScriptFramework
                 if(amount == nullptr) throw gcnew System::ArgumentNullException("amount");
                 stack10 vec;
                 vec.set(0, amount);
-                Memory::InvokeCdecl(MCH::FromBase(0x140DB35D0), self->Address, vec.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::bhkRigidBody_ApplyLinearImpulse), self->Address, vec.ptr());
             }
         };
         
@@ -10745,7 +10746,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -10756,7 +10757,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -10794,7 +10795,7 @@ namespace NetScriptFramework
             virtual void __clrcall Apply(System::Single strength, NiNode^ node) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14024CA50), self->Address, strength, node != nullptr ? node->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESImageSpaceModifier_Apply), self->Address, strength, node != nullptr ? node->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -10803,7 +10804,7 @@ namespace NetScriptFramework
             virtual void __clrcall Remove() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140988D50), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESImageSpaceModifier_Remove), 0, 0, self->Address);
             }
         };
         
@@ -10834,7 +10835,7 @@ namespace NetScriptFramework
                 auto self = this->As<MagicTarget^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
                 stack10 s;
-                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140553350), self->Address, keyword->Address, s.ptr()));
+                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectWithKeyword), self->Address, keyword->Address, s.ptr()));
                 if((p & 0xFF) == 0) return false;
                 System::IntPtr itemPtr = System::IntPtr(s.get<void*>(0));
                 if(itemPtr != System::IntPtr::Zero) item = MemoryObject::FromAddress<MagicItem^>(itemPtr);
@@ -10862,7 +10863,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<EffectSetting^>(effect, "effect");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405532C0), self->Address, effect->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffect), self->Address, effect->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -10872,7 +10873,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<TESObjectREFR^>(onlyFromCaster, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x140552ED0), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_DispelEffectsWithArchetype), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -10883,7 +10884,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this->As<MagicTarget^>();
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405534A0), self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectThatCausesDamage_Get), self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -10893,7 +10894,7 @@ namespace NetScriptFramework
             virtual ActiveEffect^ __clrcall FindFirstEffectWithArchetype(Archetypes archetype, bool allowInactive) sealed
             {
                 auto self = this->As<MagicTarget^>();
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1405545C0), self->Address, (int)archetype, allowInactive ? 1 : 0);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_FindFirstEffectWithArchetype), self->Address, (int)archetype, allowInactive ? 1 : 0);
                 return MemoryObject::FromAddress<ActiveEffect^>(ptr);
             }
         };
@@ -11100,7 +11101,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -11111,7 +11112,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11242,7 +11243,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(activator, "activator");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140296DF0), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Activate), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11253,7 +11254,7 @@ namespace NetScriptFramework
                 BGSLocation^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(0x1402996E0), self->Address));
+                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_CurrentLocation_Get), self->Address));
                 }
             }
             
@@ -11264,7 +11265,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(!self->HasInventory) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14085EC90), self->Address, (int)type);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_OpenInventory), self->Address, (int)type);
             }
             
             /// <summary>
@@ -11289,7 +11290,7 @@ namespace NetScriptFramework
                 ExtraContainerChanges::Data^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                     return MemoryObject::FromAddress<ExtraContainerChanges::Data^>(ptr);
                 }
             }
@@ -11305,7 +11306,7 @@ namespace NetScriptFramework
                 StringRefHolder^ str = gcnew StringRefHolder(name);
                 try
                 {
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1404F08D0), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_SetAnimationVariableBool), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
                 }
                 finally
                 {
@@ -11332,7 +11333,7 @@ namespace NetScriptFramework
             virtual BSExtraData^ __clrcall GetExtraData(ExtraDataTypes type) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401325B0), self->Address, (int)type);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_GetExtraData), self->Address, (int)type);
                 return MemoryObject::FromAddress<BSExtraData^>(ptr);
             }
             
@@ -11427,7 +11428,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(activator, "activator");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140296DF0), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Activate), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11438,7 +11439,7 @@ namespace NetScriptFramework
                 BGSLocation^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(0x1402996E0), self->Address));
+                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_CurrentLocation_Get), self->Address));
                 }
             }
             
@@ -11449,7 +11450,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(!self->HasInventory) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14085EC90), self->Address, (int)type);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_OpenInventory), self->Address, (int)type);
             }
             
             /// <summary>
@@ -11474,7 +11475,7 @@ namespace NetScriptFramework
                 ExtraContainerChanges::Data^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                     return MemoryObject::FromAddress<ExtraContainerChanges::Data^>(ptr);
                 }
             }
@@ -11490,7 +11491,7 @@ namespace NetScriptFramework
                 StringRefHolder^ str = gcnew StringRefHolder(name);
                 try
                 {
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1404F08D0), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_SetAnimationVariableBool), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
                 }
                 finally
                 {
@@ -11517,7 +11518,7 @@ namespace NetScriptFramework
             virtual BSExtraData^ __clrcall GetExtraData(ExtraDataTypes type) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401325B0), self->Address, (int)type);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_GetExtraData), self->Address, (int)type);
                 return MemoryObject::FromAddress<BSExtraData^>(ptr);
             }
             
@@ -11552,7 +11553,7 @@ namespace NetScriptFramework
                 auto self = this->As<MagicTarget^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
                 stack10 s;
-                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140553350), self->Address, keyword->Address, s.ptr()));
+                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectWithKeyword), self->Address, keyword->Address, s.ptr()));
                 if((p & 0xFF) == 0) return false;
                 System::IntPtr itemPtr = System::IntPtr(s.get<void*>(0));
                 if(itemPtr != System::IntPtr::Zero) item = MemoryObject::FromAddress<MagicItem^>(itemPtr);
@@ -11580,7 +11581,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<EffectSetting^>(effect, "effect");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405532C0), self->Address, effect->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffect), self->Address, effect->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11590,7 +11591,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<TESObjectREFR^>(onlyFromCaster, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x140552ED0), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_DispelEffectsWithArchetype), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -11601,7 +11602,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this->As<MagicTarget^>();
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405534A0), self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectThatCausesDamage_Get), self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -11611,7 +11612,7 @@ namespace NetScriptFramework
             virtual ActiveEffect^ __clrcall FindFirstEffectWithArchetype(Archetypes archetype, bool allowInactive) sealed
             {
                 auto self = this->As<MagicTarget^>();
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1405545C0), self->Address, (int)archetype, allowInactive ? 1 : 0);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_FindFirstEffectWithArchetype), self->Address, (int)archetype, allowInactive ? 1 : 0);
                 return MemoryObject::FromAddress<ActiveEffect^>(ptr);
             }
             
@@ -11671,7 +11672,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -11807,7 +11808,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -11818,7 +11819,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11888,7 +11889,7 @@ namespace NetScriptFramework
                 {
                     auto self = this;
                     MCH::e<TESRace^>(value, "value");
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CF20), 0, 0, self->Address, value->Address);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Race_Set), 0, 0, self->Address, value->Address);
                 }
             }
             
@@ -11899,7 +11900,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(pos == nullptr) throw gcnew System::ArgumentNullException("pos");
-                auto controller = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), self->Address);
+                auto controller = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), self->Address);
                 if(controller != System::IntPtr::Zero)
                 {
                     auto type = this->MovementState;
@@ -11932,7 +11933,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14062FA70), self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddShout), self->Address, shout->Address);
             }
             
             /// <summary>
@@ -11942,7 +11943,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A130), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddSpell), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -11951,7 +11952,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowBleedoutDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958450), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowBleedoutDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -11960,7 +11961,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowPCDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A2B0), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowPCDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -11969,7 +11970,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearArrested() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A550), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearArrested), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -11980,7 +11981,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958470), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanFlyHere_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12001,7 +12002,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearExtraArrows() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A630), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearExtraArrows), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12010,7 +12011,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearKeepOffsetFromActor() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958480), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearKeepOffsetFromActor), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12019,7 +12020,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearLookAtObject() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A640), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtObject), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12028,7 +12029,7 @@ namespace NetScriptFramework
             virtual bool __clrcall Dismount() sealed
             {
                 auto self = this;
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958490), 0, 0, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Dismount), 0, 0, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12037,7 +12038,7 @@ namespace NetScriptFramework
             virtual void __clrcall DispelAllSpells() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelAllSpells), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12047,7 +12048,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A000), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12058,7 +12059,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
                 MCH::e<TESObjectREFR^>(target, "target");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584B0), 0, 0, self->Address, spell->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DoCombatSpellApply), 0, 0, self->Address, spell->Address, target->Address);
             }
             
             /// <summary>
@@ -12067,7 +12068,7 @@ namespace NetScriptFramework
             virtual void __clrcall DrawWeapon() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E080), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DrawWeapon), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12076,7 +12077,7 @@ namespace NetScriptFramework
             virtual void __clrcall EnableAI(bool enable) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584C0), 0, 0, self->Address, enable ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EnableAI), 0, 0, self->Address, enable ? 1 : 0);
             }
             
             /// <summary>
@@ -12085,7 +12086,7 @@ namespace NetScriptFramework
             virtual void __clrcall EndDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EndDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12097,7 +12098,7 @@ namespace NetScriptFramework
                 MCH::e<TESForm^>(form, "form");
                 auto has3d = MCH::u(form->InvokeVTableThisCall(0, 0x138));
                 if((has3d & 0xFF) == 0) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A7C0), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipItem), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -12107,7 +12108,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA20), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -12116,7 +12117,7 @@ namespace NetScriptFramework
             virtual void __clrcall EvaluatePackage() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EvaluatePackage), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -12125,7 +12126,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetBribeAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409584D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetBribeAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -12136,7 +12137,7 @@ namespace NetScriptFramework
                 ActorCombatStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094AE90), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12148,7 +12149,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AEA0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -12160,12 +12161,12 @@ namespace NetScriptFramework
                 TESFaction^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584E0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESFaction^ value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958820), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -12177,7 +12178,7 @@ namespace NetScriptFramework
                 TESPackage^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF10), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CurrentPackage_Get), 0, 0, self->Address));
                 }
             }
             
@@ -12189,7 +12190,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF70), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DialogueTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -12199,9 +12200,9 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedArmorInSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(ptr == System::IntPtr::Zero) return nullptr;
-                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1401E7760), ptr, (int)slot));
+                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedArmorInSlot), ptr, (int)slot));
             }
             
             /// <summary>
@@ -12215,11 +12216,11 @@ namespace NetScriptFramework
                 if(ptr != System::IntPtr::Zero)
                 {
                     System::IntPtr obj = System::IntPtr::Zero;
-                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646050), ptr);
-                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646060), ptr);
+                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_LeftHand), ptr);
+                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_RightHand), ptr);
                     if(obj != System::IntPtr::Zero)
                     {
-                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(0x1401870E0), obj);
+                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_ItemType), obj);
                         rs = (int)(typeId.ToInt64() & 0xFFFF);
                     }
                 }
@@ -12232,7 +12233,7 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedShield() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584F0), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShield), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -12241,7 +12242,7 @@ namespace NetScriptFramework
             virtual TESShout^ __clrcall GetEquippedShout() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(0x140958500), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShout), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -12252,7 +12253,7 @@ namespace NetScriptFramework
                 auto self = this;
                 System::UInt32 arg = (System::UInt32)slot;
                 if(arg >= 4) return nullptr;
-                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AFE0), 0, 0, self->Address, arg));
+                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedSpell), 0, 0, self->Address, arg));
             }
             
             /// <summary>
@@ -12262,7 +12263,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B150), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionRank), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -12272,7 +12273,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1A0), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionReaction), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -12283,7 +12284,7 @@ namespace NetScriptFramework
                 FlyingStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958520), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_FlyingState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12295,13 +12296,13 @@ namespace NetScriptFramework
                 TESObjectREFR^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B2B0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESObjectREFR^ value) sealed
                 {
                     auto self = this;
                     MCH::e<TESObjectREFR^>(value, nullptr);
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CC10), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -12311,7 +12312,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetGoldAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958530), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetGoldAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -12322,7 +12323,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1E0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HighestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12334,7 +12335,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B220), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_KilledBy_Get), 0, 0, self->Address));
                 }
             }
             
@@ -12346,7 +12347,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this;
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958540), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Level_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12358,7 +12359,7 @@ namespace NetScriptFramework
                 TESNPC^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B330), 0, 0, self->Address));
+                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_BaseActor_Get), 0, 0, self->Address));
                     if(npc == nullptr)
                     {
                     auto obj = self->BaseForm;
@@ -12377,7 +12378,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958560), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_LightLevel_Get), 0, 0, self->Address);
                 }
             }
             
@@ -12389,7 +12390,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B350), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_LowestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12401,12 +12402,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958570), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958860), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12418,12 +12419,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B390), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CE80), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12434,7 +12435,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B860), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetRelationshipRank), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -12445,7 +12446,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B8D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SitState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12457,7 +12458,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B910), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SleepState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -12469,12 +12470,12 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958590), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Get), 0, 0, self->Address);
                 }
                 void __clrcall set(System::Single value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409588A0), 0, 0, self->Address, value);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Set), 0, 0, self->Address, value);
                 }
             }
             
@@ -12486,7 +12487,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x14094B3D0), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_WarmthRating_Get), 0, 0, self->Address);
                 }
             }
             
@@ -12498,7 +12499,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<BGSAssociationType^>(type, "type");
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B3E0), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasAssociation), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12508,7 +12509,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B450), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasFamilyRelationship), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12520,7 +12521,7 @@ namespace NetScriptFramework
                 MCH::e<TESObjectREFR^>(other, "other");
                 if(other->FormType != FormTypes::Character && !self->Equals(PlayerCharacter::Instance)) return false;
                 stack10 s;
-                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(0x14091C810), self->Address, other->Address, s.ptr());
+                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasLOS_Papyrus), self->Address, other->Address, s.ptr());
                 auto result = MCH::u(ptrResult);
                 return (result & 0xFF) != 0;
             }
@@ -12532,7 +12533,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B530), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasParentRelationship), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12543,7 +12544,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlarmed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12555,12 +12556,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094C6D0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12572,7 +12573,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrested_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12584,7 +12585,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBleedingOut_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12596,7 +12597,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDead_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12607,7 +12608,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B660), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanDetect), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12617,7 +12618,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B6C0), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEquipped), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12628,7 +12629,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayersLastRiddenHorse_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12640,7 +12641,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrestingTarget_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12652,12 +12653,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409587F0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12668,7 +12669,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949F10), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasPerk), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12682,12 +12683,12 @@ namespace NetScriptFramework
                 if(formType == FormTypes::Spell)
                 {
                     auto arg = spellOrShout->As<SpellItem^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F00), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Spell), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 else if(formType == FormTypes::Shout)
                 {
                     auto arg = spellOrShout->As<TESShout^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F40), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Shout), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 return false;
             }
@@ -12700,12 +12701,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958810), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12717,7 +12718,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsChild_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12729,7 +12730,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsCommandedActor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12741,12 +12742,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958600), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958830), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12758,7 +12759,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958610), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEssential_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12770,7 +12771,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsFlying_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12782,12 +12783,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958840), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12799,7 +12800,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958650), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGuard_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12810,7 +12811,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958660), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsHostileToActor), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12821,7 +12822,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958670), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInCombat_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12832,7 +12833,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958680), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInFaction), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -12843,7 +12844,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958690), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInKillmove_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12855,12 +12856,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958850), 0, 0, self->Address, value ? 1 : 0 );
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Set), 0, 0, self->Address, value ? 1 : 0 );
                 }
             }
             
@@ -12872,7 +12873,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnMount_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12884,7 +12885,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586C0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOverEncumbered_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12896,7 +12897,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayerTeammate_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12908,7 +12909,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsRunning_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12920,13 +12921,13 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
                     if(this->IsSneaking == value) return;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094DF50), 0, 0, self->Address); // This is a toggle
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Set), 0, 0, self->Address); // This is a toggle
                 }
             }
             
@@ -12938,7 +12939,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSprinting_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12950,7 +12951,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958770), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsTrespassing_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12962,12 +12963,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958780), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094D280), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -12979,7 +12980,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsWeaponDrawn_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -12995,15 +12996,15 @@ namespace NetScriptFramework
                     auto mt = this->As<MagicTarget^>();
                     if(mt == nullptr) return;
                     auto res1 = MCH::u(mt->InvokeVTableThisCall(0, 0x20));
-                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405D2710), self->Address));
+                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_1), self->Address));
                     bool ok = (res1 & 0xFF) == 0 || (res2 & 0xFF) != 0;
                     if(!ok) return;
                 }
                 if((Memory::ReadUInt32(self->Address + 0xC0, false) & 0x1E00000) == 0xE00000)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x1405EE0E0), self->Address, 0, noEvents ? 0 : 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_2), self->Address, 0, noEvents ? 0 : 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405D48F0), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_3), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
             }
             
             /// <summary>
@@ -13027,7 +13028,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587C0), 0, 0, self->Address, faction->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromFaction), 0, 0, self->Address, faction->Address);
             }
             
             /// <summary>
@@ -13036,7 +13037,7 @@ namespace NetScriptFramework
             virtual void __clrcall RemoveFromAllFactions() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C100), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromAllFactions), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13046,7 +13047,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                Memory::InvokeCdecl(MCH::FromBase(0x140949F60), 0, 0, self->Address, perk->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemovePerk), 0, 0, self->Address, perk->Address);
             }
             
             /// <summary>
@@ -13056,7 +13057,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587D0), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveShout), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -13066,7 +13067,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949FA0), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -13075,7 +13076,7 @@ namespace NetScriptFramework
             virtual void __clrcall ResetHealthAndLimbs() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587E0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ResetHealthAndLimbs), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13096,12 +13097,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(assaulter, "assaulter");
-                Memory::InvokeCdecl(MCH::FromBase(0x1405DEA00), self->Address, assaulter->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_1), self->Address, assaulter->Address);
                 System::UInt32 flags = Memory::ReadUInt32(self->Address + 0xE0, false);
                 if(((flags >> 30) & 1) != 0) return;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14064FE40), process, self->Address, assaulter->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_2), process, self->Address, assaulter->Address, 0);
             }
             
             /// <summary>
@@ -13111,7 +13112,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(criminal, "criminal");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C4F0), 0, 0, self->Address, criminal->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendTrespassAlarm), 0, 0, self->Address, criminal->Address);
             }
             
             /// <summary>
@@ -13120,7 +13121,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAllowFlyingEx(bool allowFly, bool allowCrash, bool allowSearch) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C790), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAllowFlyingEx), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
             }
             
             /// <summary>
@@ -13131,7 +13132,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C850), 0, 0, self->Address, alpha, fade ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAlpha), 0, 0, self->Address, alpha, fade ? 1 : 0);
             }
             
             /// <summary>
@@ -13140,7 +13141,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAttackedByAllOnSight(bool should) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958800), 0, 0, self->Address, should ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAttackedByAllOnSight), 0, 0, self->Address, should ? 1 : 0);
             }
             
             /// <summary>
@@ -13151,7 +13152,7 @@ namespace NetScriptFramework
                 auto self = this;
                 int _s = (int)stage;
                 if(_s < 0 || _s >= 5) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1405EE870), self->Address, (int)stage);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetCriticalStage), self->Address, (int)stage);
             }
             
             /// <summary>
@@ -13160,7 +13161,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetDontMove(bool dontMove) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D140), 0, 0, self->Address, dontMove ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetDontMove), 0, 0, self->Address, dontMove ? 1 : 0);
             }
             
             /// <summary>
@@ -13174,7 +13175,7 @@ namespace NetScriptFramework
                 auto faceAnim = self->InvokeVTableThisCall(0, 0x318);
                 if(faceAnim == System::IntPtr::Zero) return false;
                 Memory::WriteUInt8(faceAnim + 0x21E, 0, false);
-                Memory::InvokeCdecl(MCH::FromBase(0x1403C40F0), faceAnim, expression, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetExpressionOverride), faceAnim, expression, amount);
                 Memory::WriteUInt8(faceAnim + 0x21E, 1, false);
                 return true;
             }
@@ -13215,7 +13216,7 @@ namespace NetScriptFramework
                 }
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CC80), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtObject), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
             }
             
             /// <summary>
@@ -13233,7 +13234,7 @@ namespace NetScriptFramework
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958870), 0, 0, self->Address, !value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowOnStealthMeter_Set), 0, 0, self->Address, !value ? 1 : 0);
                 }
             }
             
@@ -13244,7 +13245,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSOutfit^>(outfit, "outfit");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CDB0), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetOutfit), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
             }
             
             /// <summary>
@@ -13253,7 +13254,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerResistingArrest() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CEF0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerResistingArrest), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13262,7 +13263,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerTeammate(bool teammate, bool canDoFavors) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958880), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerTeammate), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
             }
             
             /// <summary>
@@ -13272,7 +13273,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CFA0), 0, 0, self->Address, other->Address, (int)rank);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRelationshipRank), 0, 0, self->Address, other->Address, (int)rank);
             }
             
             /// <summary>
@@ -13281,7 +13282,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetRestrained(bool restrained) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D100), 0, 0, self->Address, restrained ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRestrained), 0, 0, self->Address, restrained ? 1 : 0);
             }
             
             /// <summary>
@@ -13291,7 +13292,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(vehicle, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D330), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetVehicle), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -13300,7 +13301,7 @@ namespace NetScriptFramework
             virtual void __clrcall ShowBarterMenu() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D3B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowBarterMenu), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13317,10 +13318,10 @@ namespace NetScriptFramework
                 if((MCH::u(target->InvokeVTableThisCall(0, 0x4C8, 0)) & 0xFF) != 0) return false;
                 if(!target->IsPlayer)
                 {
-                    auto p = Memory::InvokeCdecl(MCH::FromBase(0x1405FBC30), self->Address);
+                    auto p = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_1), self->Address);
                     if((MCH::u(p) & 0xFF) != 0) return false;
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405C58B0), Memory::ReadPointer(MCH::FromBase(0x142F5F978), false), self->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_2), Memory::ReadPointer(MCH::FromBase(GameAddress::Actor_StartCombat_3), false), self->Address, target->Address);
                 return true;
             }
             
@@ -13330,7 +13331,7 @@ namespace NetScriptFramework
             virtual void __clrcall StartDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13339,7 +13340,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombatAlarm() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA00), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombatAlarm), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13348,7 +13349,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombat() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D9A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombat), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13358,7 +13359,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094DA40), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_TrapSoul), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -13369,7 +13370,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto cell = this->ParentCell;
                 if(cell == nullptr || !cell->IsInterior) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DE20), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnlockOwnedDoorsInCell), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13378,7 +13379,7 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipAll() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipAll), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -13387,9 +13388,9 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipItemSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto data = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto data = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(data == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1401E77B0), data, (int)slot, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItemSlot), data, (int)slot, self->Address);
             }
             
             /// <summary>
@@ -13400,9 +13401,9 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
                 if(!form->Has3D) return;
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA80), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItem), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -13412,7 +13413,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA60), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -13424,7 +13425,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB00), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -13436,7 +13437,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AAA0), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -13447,7 +13448,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409588B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WillIntimidateSucceed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -13458,9 +13459,9 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
-                auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, keyword->Address);
+                auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, keyword->Address);
                 return (MCH::u(result) & 0xFF) != 0;
             }
             
@@ -13471,12 +13472,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(keyword == nullptr) throw gcnew System::ArgumentNullException("keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
                 auto ls = KeywordCache::Get(keyword);
                 for each(BGSKeyword^ kw in ls)
                 {
-                    auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, kw->Address);
+                    auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, kw->Address);
                     if((MCH::u(result) & 0xFF) != 0) return true;
                 }
                 return false;
@@ -13492,7 +13493,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D380), process, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtPosition), process, self->Address);
             }
             
             /// <summary>
@@ -13510,7 +13511,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D310), process, self->Address, position->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtPosition), process, self->Address, position->Address);
             }
             
             /// <summary>
@@ -13519,7 +13520,7 @@ namespace NetScriptFramework
             virtual void __clrcall InterruptCast() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140631E70), self->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_InterruptCast), self->Address, 0);
             }
             
             /// <summary>
@@ -13530,7 +13531,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1402E4500), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBeingRidden_Get), self->Address));
                 }
             }
             
@@ -13542,7 +13543,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1406059B0), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnFlyingMount_Get), self->Address));
                 }
             }
             
@@ -13557,12 +13558,12 @@ namespace NetScriptFramework
                     auto ptr = Memory::ReadPointer(self->Address + 0xF0, false);
                     if(ptr != System::IntPtr::Zero)
                     {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), ptr);
-                    if(ptr != System::IntPtr::Zero)
-                    {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x140AB9480), ptr + 480);
-                    return (bhkCharacterStateTypes)((int)(MCH::u(ptr) & 0xFF));
-                    }
+						ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), ptr);
+						if(ptr != System::IntPtr::Zero)
+						{
+							ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_MovementState_Get), ptr + 480);
+							return (bhkCharacterStateTypes)((int)(MCH::u(ptr) & 0xFF));
+						}
                     }
                     return bhkCharacterStateTypes::Unknown;
                 }
@@ -13601,7 +13602,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EDB0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMount), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -13625,7 +13626,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EEC0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMountedBy), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -13750,7 +13751,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -13761,7 +13762,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -13857,7 +13858,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14098F110), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL_IsInterior_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -13879,7 +13880,7 @@ namespace NetScriptFramework
                 TESForm^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESForm^>(Memory::InvokeCdecl(MCH::FromBase(0x140265210), self->Address));
+                    return MemoryObject::FromAddress<TESForm^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL_OwnerForm_Get), self->Address));
                 }
             }
             
@@ -13891,7 +13892,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14098F100), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL_IsAttached_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -13904,7 +13905,7 @@ namespace NetScriptFramework
                 {
                     auto self = this;
                     stack20 s;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1402636A0), self->Address, s.ptr(), s.ptr() + 0x10);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL_Coordinate_Get), self->Address, s.ptr(), s.ptr() + 0x10);
                     return s.get<int>(0);
                 }
             }
@@ -13918,7 +13919,7 @@ namespace NetScriptFramework
                 {
                     auto self = this;
                     stack20 s;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1402636A0), self->Address, s.ptr(), s.ptr() + 0x10);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectCELL_Coordinate_Get), self->Address, s.ptr(), s.ptr() + 0x10);
                     return s.get<int>(0x10);
                 }
             }
@@ -13943,7 +13944,7 @@ namespace NetScriptFramework
                 {
                     auto self = this;
                     MCH::e<TESRace^>(value, "value");
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CF20), 0, 0, self->Address, value->Address);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Race_Set), 0, 0, self->Address, value->Address);
                 }
             }
             
@@ -13954,7 +13955,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(pos == nullptr) throw gcnew System::ArgumentNullException("pos");
-                auto controller = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), self->Address);
+                auto controller = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), self->Address);
                 if(controller != System::IntPtr::Zero)
                 {
                     auto type = this->MovementState;
@@ -13987,7 +13988,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14062FA70), self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddShout), self->Address, shout->Address);
             }
             
             /// <summary>
@@ -13997,7 +13998,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A130), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddSpell), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14006,7 +14007,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowBleedoutDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958450), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowBleedoutDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -14015,7 +14016,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowPCDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A2B0), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowPCDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -14024,7 +14025,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearArrested() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A550), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearArrested), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14035,7 +14036,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958470), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanFlyHere_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14056,7 +14057,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearExtraArrows() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A630), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearExtraArrows), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14065,7 +14066,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearKeepOffsetFromActor() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958480), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearKeepOffsetFromActor), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14074,7 +14075,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearLookAtObject() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A640), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtObject), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14083,7 +14084,7 @@ namespace NetScriptFramework
             virtual bool __clrcall Dismount() sealed
             {
                 auto self = this;
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958490), 0, 0, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Dismount), 0, 0, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14092,7 +14093,7 @@ namespace NetScriptFramework
             virtual void __clrcall DispelAllSpells() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelAllSpells), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14102,7 +14103,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A000), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14113,7 +14114,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
                 MCH::e<TESObjectREFR^>(target, "target");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584B0), 0, 0, self->Address, spell->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DoCombatSpellApply), 0, 0, self->Address, spell->Address, target->Address);
             }
             
             /// <summary>
@@ -14122,7 +14123,7 @@ namespace NetScriptFramework
             virtual void __clrcall DrawWeapon() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E080), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DrawWeapon), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14131,7 +14132,7 @@ namespace NetScriptFramework
             virtual void __clrcall EnableAI(bool enable) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584C0), 0, 0, self->Address, enable ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EnableAI), 0, 0, self->Address, enable ? 1 : 0);
             }
             
             /// <summary>
@@ -14140,7 +14141,7 @@ namespace NetScriptFramework
             virtual void __clrcall EndDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EndDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14152,7 +14153,7 @@ namespace NetScriptFramework
                 MCH::e<TESForm^>(form, "form");
                 auto has3d = MCH::u(form->InvokeVTableThisCall(0, 0x138));
                 if((has3d & 0xFF) == 0) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A7C0), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipItem), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -14162,7 +14163,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA20), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -14171,7 +14172,7 @@ namespace NetScriptFramework
             virtual void __clrcall EvaluatePackage() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EvaluatePackage), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -14180,7 +14181,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetBribeAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409584D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetBribeAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -14191,7 +14192,7 @@ namespace NetScriptFramework
                 ActorCombatStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094AE90), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14203,7 +14204,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AEA0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -14215,12 +14216,12 @@ namespace NetScriptFramework
                 TESFaction^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584E0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESFaction^ value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958820), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -14232,7 +14233,7 @@ namespace NetScriptFramework
                 TESPackage^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF10), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CurrentPackage_Get), 0, 0, self->Address));
                 }
             }
             
@@ -14244,7 +14245,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF70), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DialogueTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -14254,9 +14255,9 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedArmorInSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(ptr == System::IntPtr::Zero) return nullptr;
-                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1401E7760), ptr, (int)slot));
+                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedArmorInSlot), ptr, (int)slot));
             }
             
             /// <summary>
@@ -14270,11 +14271,11 @@ namespace NetScriptFramework
                 if(ptr != System::IntPtr::Zero)
                 {
                     System::IntPtr obj = System::IntPtr::Zero;
-                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646050), ptr);
-                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646060), ptr);
+                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_LeftHand), ptr);
+                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_RightHand), ptr);
                     if(obj != System::IntPtr::Zero)
                     {
-                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(0x1401870E0), obj);
+                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_ItemType), obj);
                         rs = (int)(typeId.ToInt64() & 0xFFFF);
                     }
                 }
@@ -14287,7 +14288,7 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedShield() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584F0), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShield), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -14296,7 +14297,7 @@ namespace NetScriptFramework
             virtual TESShout^ __clrcall GetEquippedShout() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(0x140958500), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShout), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -14307,7 +14308,7 @@ namespace NetScriptFramework
                 auto self = this;
                 System::UInt32 arg = (System::UInt32)slot;
                 if(arg >= 4) return nullptr;
-                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AFE0), 0, 0, self->Address, arg));
+                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedSpell), 0, 0, self->Address, arg));
             }
             
             /// <summary>
@@ -14317,7 +14318,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B150), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionRank), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -14327,7 +14328,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1A0), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionReaction), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -14338,7 +14339,7 @@ namespace NetScriptFramework
                 FlyingStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958520), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_FlyingState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14350,13 +14351,13 @@ namespace NetScriptFramework
                 TESObjectREFR^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B2B0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESObjectREFR^ value) sealed
                 {
                     auto self = this;
                     MCH::e<TESObjectREFR^>(value, nullptr);
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CC10), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -14366,7 +14367,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetGoldAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958530), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetGoldAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -14377,7 +14378,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1E0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HighestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14389,7 +14390,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B220), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_KilledBy_Get), 0, 0, self->Address));
                 }
             }
             
@@ -14401,7 +14402,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this;
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958540), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Level_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14413,7 +14414,7 @@ namespace NetScriptFramework
                 TESNPC^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B330), 0, 0, self->Address));
+                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_BaseActor_Get), 0, 0, self->Address));
                     if(npc == nullptr)
                     {
                     auto obj = self->BaseForm;
@@ -14432,7 +14433,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958560), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_LightLevel_Get), 0, 0, self->Address);
                 }
             }
             
@@ -14444,7 +14445,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B350), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_LowestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14456,12 +14457,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958570), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958860), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14473,12 +14474,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B390), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CE80), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14489,7 +14490,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B860), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetRelationshipRank), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -14500,7 +14501,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B8D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SitState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14512,7 +14513,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B910), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SleepState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -14524,12 +14525,12 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958590), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Get), 0, 0, self->Address);
                 }
                 void __clrcall set(System::Single value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409588A0), 0, 0, self->Address, value);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Set), 0, 0, self->Address, value);
                 }
             }
             
@@ -14541,7 +14542,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x14094B3D0), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_WarmthRating_Get), 0, 0, self->Address);
                 }
             }
             
@@ -14553,7 +14554,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<BGSAssociationType^>(type, "type");
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B3E0), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasAssociation), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14563,7 +14564,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B450), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasFamilyRelationship), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14575,7 +14576,7 @@ namespace NetScriptFramework
                 MCH::e<TESObjectREFR^>(other, "other");
                 if(other->FormType != FormTypes::Character && !self->Equals(PlayerCharacter::Instance)) return false;
                 stack10 s;
-                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(0x14091C810), self->Address, other->Address, s.ptr());
+                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasLOS_Papyrus), self->Address, other->Address, s.ptr());
                 auto result = MCH::u(ptrResult);
                 return (result & 0xFF) != 0;
             }
@@ -14587,7 +14588,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B530), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasParentRelationship), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14598,7 +14599,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlarmed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14610,12 +14611,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094C6D0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14627,7 +14628,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrested_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14639,7 +14640,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBleedingOut_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14651,7 +14652,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDead_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14662,7 +14663,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B660), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanDetect), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14672,7 +14673,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B6C0), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEquipped), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14683,7 +14684,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayersLastRiddenHorse_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14695,7 +14696,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrestingTarget_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14707,12 +14708,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409587F0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14723,7 +14724,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949F10), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasPerk), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14737,12 +14738,12 @@ namespace NetScriptFramework
                 if(formType == FormTypes::Spell)
                 {
                     auto arg = spellOrShout->As<SpellItem^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F00), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Spell), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 else if(formType == FormTypes::Shout)
                 {
                     auto arg = spellOrShout->As<TESShout^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F40), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Shout), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 return false;
             }
@@ -14755,12 +14756,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958810), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14772,7 +14773,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsChild_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14784,7 +14785,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsCommandedActor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14796,12 +14797,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958600), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958830), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14813,7 +14814,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958610), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEssential_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14825,7 +14826,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsFlying_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14837,12 +14838,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958840), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -14854,7 +14855,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958650), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGuard_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14865,7 +14866,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958660), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsHostileToActor), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14876,7 +14877,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958670), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInCombat_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14887,7 +14888,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958680), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInFaction), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -14898,7 +14899,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958690), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInKillmove_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14910,12 +14911,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958850), 0, 0, self->Address, value ? 1 : 0 );
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Set), 0, 0, self->Address, value ? 1 : 0 );
                 }
             }
             
@@ -14927,7 +14928,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnMount_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14939,7 +14940,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586C0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOverEncumbered_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14951,7 +14952,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayerTeammate_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14963,7 +14964,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsRunning_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -14975,13 +14976,13 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
                     if(this->IsSneaking == value) return;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094DF50), 0, 0, self->Address); // This is a toggle
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Set), 0, 0, self->Address); // This is a toggle
                 }
             }
             
@@ -14993,7 +14994,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSprinting_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -15005,7 +15006,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958770), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsTrespassing_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -15017,12 +15018,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958780), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094D280), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -15034,7 +15035,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsWeaponDrawn_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -15050,15 +15051,15 @@ namespace NetScriptFramework
                     auto mt = this->As<MagicTarget^>();
                     if(mt == nullptr) return;
                     auto res1 = MCH::u(mt->InvokeVTableThisCall(0, 0x20));
-                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405D2710), self->Address));
+                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_1), self->Address));
                     bool ok = (res1 & 0xFF) == 0 || (res2 & 0xFF) != 0;
                     if(!ok) return;
                 }
                 if((Memory::ReadUInt32(self->Address + 0xC0, false) & 0x1E00000) == 0xE00000)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x1405EE0E0), self->Address, 0, noEvents ? 0 : 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_2), self->Address, 0, noEvents ? 0 : 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405D48F0), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_3), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
             }
             
             /// <summary>
@@ -15082,7 +15083,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587C0), 0, 0, self->Address, faction->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromFaction), 0, 0, self->Address, faction->Address);
             }
             
             /// <summary>
@@ -15091,7 +15092,7 @@ namespace NetScriptFramework
             virtual void __clrcall RemoveFromAllFactions() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C100), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromAllFactions), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15101,7 +15102,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                Memory::InvokeCdecl(MCH::FromBase(0x140949F60), 0, 0, self->Address, perk->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemovePerk), 0, 0, self->Address, perk->Address);
             }
             
             /// <summary>
@@ -15111,7 +15112,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587D0), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveShout), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -15121,7 +15122,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949FA0), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -15130,7 +15131,7 @@ namespace NetScriptFramework
             virtual void __clrcall ResetHealthAndLimbs() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587E0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ResetHealthAndLimbs), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15151,12 +15152,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(assaulter, "assaulter");
-                Memory::InvokeCdecl(MCH::FromBase(0x1405DEA00), self->Address, assaulter->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_1), self->Address, assaulter->Address);
                 System::UInt32 flags = Memory::ReadUInt32(self->Address + 0xE0, false);
                 if(((flags >> 30) & 1) != 0) return;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14064FE40), process, self->Address, assaulter->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_2), process, self->Address, assaulter->Address, 0);
             }
             
             /// <summary>
@@ -15166,7 +15167,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(criminal, "criminal");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C4F0), 0, 0, self->Address, criminal->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendTrespassAlarm), 0, 0, self->Address, criminal->Address);
             }
             
             /// <summary>
@@ -15175,7 +15176,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAllowFlyingEx(bool allowFly, bool allowCrash, bool allowSearch) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C790), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAllowFlyingEx), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
             }
             
             /// <summary>
@@ -15186,7 +15187,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C850), 0, 0, self->Address, alpha, fade ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAlpha), 0, 0, self->Address, alpha, fade ? 1 : 0);
             }
             
             /// <summary>
@@ -15195,7 +15196,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAttackedByAllOnSight(bool should) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958800), 0, 0, self->Address, should ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAttackedByAllOnSight), 0, 0, self->Address, should ? 1 : 0);
             }
             
             /// <summary>
@@ -15206,7 +15207,7 @@ namespace NetScriptFramework
                 auto self = this;
                 int _s = (int)stage;
                 if(_s < 0 || _s >= 5) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1405EE870), self->Address, (int)stage);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetCriticalStage), self->Address, (int)stage);
             }
             
             /// <summary>
@@ -15215,7 +15216,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetDontMove(bool dontMove) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D140), 0, 0, self->Address, dontMove ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetDontMove), 0, 0, self->Address, dontMove ? 1 : 0);
             }
             
             /// <summary>
@@ -15229,7 +15230,7 @@ namespace NetScriptFramework
                 auto faceAnim = self->InvokeVTableThisCall(0, 0x318);
                 if(faceAnim == System::IntPtr::Zero) return false;
                 Memory::WriteUInt8(faceAnim + 0x21E, 0, false);
-                Memory::InvokeCdecl(MCH::FromBase(0x1403C40F0), faceAnim, expression, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetExpressionOverride), faceAnim, expression, amount);
                 Memory::WriteUInt8(faceAnim + 0x21E, 1, false);
                 return true;
             }
@@ -15270,7 +15271,7 @@ namespace NetScriptFramework
                 }
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CC80), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtObject), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
             }
             
             /// <summary>
@@ -15288,7 +15289,7 @@ namespace NetScriptFramework
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958870), 0, 0, self->Address, !value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowOnStealthMeter_Set), 0, 0, self->Address, !value ? 1 : 0);
                 }
             }
             
@@ -15299,7 +15300,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSOutfit^>(outfit, "outfit");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CDB0), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetOutfit), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
             }
             
             /// <summary>
@@ -15308,7 +15309,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerResistingArrest() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CEF0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerResistingArrest), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15317,7 +15318,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerTeammate(bool teammate, bool canDoFavors) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958880), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerTeammate), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
             }
             
             /// <summary>
@@ -15327,7 +15328,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CFA0), 0, 0, self->Address, other->Address, (int)rank);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRelationshipRank), 0, 0, self->Address, other->Address, (int)rank);
             }
             
             /// <summary>
@@ -15336,7 +15337,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetRestrained(bool restrained) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D100), 0, 0, self->Address, restrained ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRestrained), 0, 0, self->Address, restrained ? 1 : 0);
             }
             
             /// <summary>
@@ -15346,7 +15347,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(vehicle, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D330), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetVehicle), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -15355,7 +15356,7 @@ namespace NetScriptFramework
             virtual void __clrcall ShowBarterMenu() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D3B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowBarterMenu), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15372,10 +15373,10 @@ namespace NetScriptFramework
                 if((MCH::u(target->InvokeVTableThisCall(0, 0x4C8, 0)) & 0xFF) != 0) return false;
                 if(!target->IsPlayer)
                 {
-                    auto p = Memory::InvokeCdecl(MCH::FromBase(0x1405FBC30), self->Address);
+                    auto p = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_1), self->Address);
                     if((MCH::u(p) & 0xFF) != 0) return false;
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405C58B0), Memory::ReadPointer(MCH::FromBase(0x142F5F978), false), self->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_2), Memory::ReadPointer(MCH::FromBase(GameAddress::Actor_StartCombat_3), false), self->Address, target->Address);
                 return true;
             }
             
@@ -15385,7 +15386,7 @@ namespace NetScriptFramework
             virtual void __clrcall StartDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15394,7 +15395,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombatAlarm() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA00), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombatAlarm), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15403,7 +15404,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombat() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D9A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombat), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15413,7 +15414,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094DA40), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_TrapSoul), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -15424,7 +15425,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto cell = this->ParentCell;
                 if(cell == nullptr || !cell->IsInterior) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DE20), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnlockOwnedDoorsInCell), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15433,7 +15434,7 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipAll() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipAll), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -15442,9 +15443,9 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipItemSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto data = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto data = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(data == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1401E77B0), data, (int)slot, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItemSlot), data, (int)slot, self->Address);
             }
             
             /// <summary>
@@ -15455,9 +15456,9 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
                 if(!form->Has3D) return;
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA80), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItem), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -15467,7 +15468,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA60), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -15479,7 +15480,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB00), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -15491,7 +15492,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AAA0), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -15502,7 +15503,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409588B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WillIntimidateSucceed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -15513,9 +15514,9 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
-                auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, keyword->Address);
+                auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, keyword->Address);
                 return (MCH::u(result) & 0xFF) != 0;
             }
             
@@ -15526,12 +15527,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(keyword == nullptr) throw gcnew System::ArgumentNullException("keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
                 auto ls = KeywordCache::Get(keyword);
                 for each(BGSKeyword^ kw in ls)
                 {
-                    auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, kw->Address);
+                    auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, kw->Address);
                     if((MCH::u(result) & 0xFF) != 0) return true;
                 }
                 return false;
@@ -15547,7 +15548,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D380), process, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtPosition), process, self->Address);
             }
             
             /// <summary>
@@ -15565,7 +15566,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D310), process, self->Address, position->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtPosition), process, self->Address, position->Address);
             }
             
             /// <summary>
@@ -15574,7 +15575,7 @@ namespace NetScriptFramework
             virtual void __clrcall InterruptCast() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140631E70), self->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_InterruptCast), self->Address, 0);
             }
             
             /// <summary>
@@ -15585,7 +15586,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1402E4500), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBeingRidden_Get), self->Address));
                 }
             }
             
@@ -15597,7 +15598,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1406059B0), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnFlyingMount_Get), self->Address));
                 }
             }
             
@@ -15612,10 +15613,10 @@ namespace NetScriptFramework
                     auto ptr = Memory::ReadPointer(self->Address + 0xF0, false);
                     if(ptr != System::IntPtr::Zero)
                     {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), ptr);
+                    ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), ptr);
                     if(ptr != System::IntPtr::Zero)
                     {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x140AB9480), ptr + 480);
+                    ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_MovementState_Get), ptr + 480);
                     return (bhkCharacterStateTypes)((int)(MCH::u(ptr) & 0xFF));
                     }
                     }
@@ -15656,7 +15657,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EDB0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMount), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -15680,7 +15681,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EEC0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMountedBy), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -15767,7 +15768,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(activator, "activator");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140296DF0), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Activate), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -15778,7 +15779,7 @@ namespace NetScriptFramework
                 BGSLocation^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(0x1402996E0), self->Address));
+                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_CurrentLocation_Get), self->Address));
                 }
             }
             
@@ -15789,7 +15790,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(!self->HasInventory) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14085EC90), self->Address, (int)type);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_OpenInventory), self->Address, (int)type);
             }
             
             /// <summary>
@@ -15814,7 +15815,7 @@ namespace NetScriptFramework
                 ExtraContainerChanges::Data^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                     return MemoryObject::FromAddress<ExtraContainerChanges::Data^>(ptr);
                 }
             }
@@ -15830,7 +15831,7 @@ namespace NetScriptFramework
                 StringRefHolder^ str = gcnew StringRefHolder(name);
                 try
                 {
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1404F08D0), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_SetAnimationVariableBool), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
                 }
                 finally
                 {
@@ -15857,7 +15858,7 @@ namespace NetScriptFramework
             virtual BSExtraData^ __clrcall GetExtraData(ExtraDataTypes type) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401325B0), self->Address, (int)type);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_GetExtraData), self->Address, (int)type);
                 return MemoryObject::FromAddress<BSExtraData^>(ptr);
             }
             
@@ -15892,7 +15893,7 @@ namespace NetScriptFramework
                 auto self = this->As<MagicTarget^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
                 stack10 s;
-                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140553350), self->Address, keyword->Address, s.ptr()));
+                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectWithKeyword), self->Address, keyword->Address, s.ptr()));
                 if((p & 0xFF) == 0) return false;
                 System::IntPtr itemPtr = System::IntPtr(s.get<void*>(0));
                 if(itemPtr != System::IntPtr::Zero) item = MemoryObject::FromAddress<MagicItem^>(itemPtr);
@@ -15920,7 +15921,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<EffectSetting^>(effect, "effect");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405532C0), self->Address, effect->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffect), self->Address, effect->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -15930,7 +15931,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<TESObjectREFR^>(onlyFromCaster, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x140552ED0), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_DispelEffectsWithArchetype), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -15941,7 +15942,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this->As<MagicTarget^>();
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405534A0), self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectThatCausesDamage_Get), self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -15951,7 +15952,7 @@ namespace NetScriptFramework
             virtual ActiveEffect^ __clrcall FindFirstEffectWithArchetype(Archetypes archetype, bool allowInactive) sealed
             {
                 auto self = this->As<MagicTarget^>();
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1405545C0), self->Address, (int)archetype, allowInactive ? 1 : 0);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_FindFirstEffectWithArchetype), self->Address, (int)archetype, allowInactive ? 1 : 0);
                 return MemoryObject::FromAddress<ActiveEffect^>(ptr);
             }
             
@@ -16011,7 +16012,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -16147,7 +16148,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16158,7 +16159,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16235,7 +16236,7 @@ namespace NetScriptFramework
                 {
                     auto self = this;
                     MCH::e<TESRace^>(value, "value");
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CF20), 0, 0, self->Address, value->Address);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Race_Set), 0, 0, self->Address, value->Address);
                 }
             }
             
@@ -16246,7 +16247,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(pos == nullptr) throw gcnew System::ArgumentNullException("pos");
-                auto controller = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), self->Address);
+                auto controller = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), self->Address);
                 if(controller != System::IntPtr::Zero)
                 {
                     auto type = this->MovementState;
@@ -16279,7 +16280,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14062FA70), self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddShout), self->Address, shout->Address);
             }
             
             /// <summary>
@@ -16289,7 +16290,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A130), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AddSpell), 0, 0, self->Address, spell->Address, showLearnedMessage ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16298,7 +16299,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowBleedoutDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958450), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowBleedoutDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -16307,7 +16308,7 @@ namespace NetScriptFramework
             virtual void __clrcall AllowPCDialogue(bool allow) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A2B0), 0, 0, self->Address, allow ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_AllowPCDialogue), 0, 0, self->Address, allow ? 1 : 0);
             }
             
             /// <summary>
@@ -16316,7 +16317,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearArrested() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A550), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearArrested), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16327,7 +16328,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958470), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanFlyHere_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16348,7 +16349,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearExtraArrows() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A630), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearExtraArrows), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16357,7 +16358,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearKeepOffsetFromActor() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958480), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearKeepOffsetFromActor), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16366,7 +16367,7 @@ namespace NetScriptFramework
             virtual void __clrcall ClearLookAtObject() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A640), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtObject), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16375,7 +16376,7 @@ namespace NetScriptFramework
             virtual bool __clrcall Dismount() sealed
             {
                 auto self = this;
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958490), 0, 0, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Dismount), 0, 0, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16384,7 +16385,7 @@ namespace NetScriptFramework
             virtual void __clrcall DispelAllSpells() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelAllSpells), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16394,7 +16395,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094A000), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DispelSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16405,7 +16406,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
                 MCH::e<TESObjectREFR^>(target, "target");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584B0), 0, 0, self->Address, spell->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DoCombatSpellApply), 0, 0, self->Address, spell->Address, target->Address);
             }
             
             /// <summary>
@@ -16414,7 +16415,7 @@ namespace NetScriptFramework
             virtual void __clrcall DrawWeapon() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E080), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DrawWeapon), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16423,7 +16424,7 @@ namespace NetScriptFramework
             virtual void __clrcall EnableAI(bool enable) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409584C0), 0, 0, self->Address, enable ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EnableAI), 0, 0, self->Address, enable ? 1 : 0);
             }
             
             /// <summary>
@@ -16432,7 +16433,7 @@ namespace NetScriptFramework
             virtual void __clrcall EndDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EndDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16444,7 +16445,7 @@ namespace NetScriptFramework
                 MCH::e<TESForm^>(form, "form");
                 auto has3d = MCH::u(form->InvokeVTableThisCall(0, 0x138));
                 if((has3d & 0xFF) == 0) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094A7C0), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipItem), 0, 0, self->Address, form->Address, preventUnequip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -16454,7 +16455,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA20), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -16463,7 +16464,7 @@ namespace NetScriptFramework
             virtual void __clrcall EvaluatePackage() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EvaluatePackage), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -16472,7 +16473,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetBribeAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409584D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetBribeAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -16483,7 +16484,7 @@ namespace NetScriptFramework
                 ActorCombatStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094AE90), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorCombatStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16495,7 +16496,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AEA0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CombatTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -16507,12 +16508,12 @@ namespace NetScriptFramework
                 TESFaction^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584E0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESFaction^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESFaction^ value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958820), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CrimeFaction_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -16524,7 +16525,7 @@ namespace NetScriptFramework
                 TESPackage^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF10), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESPackage^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CurrentPackage_Get), 0, 0, self->Address));
                 }
             }
             
@@ -16536,7 +16537,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AF70), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_DialogueTarget_Get), 0, 0, self->Address));
                 }
             }
             
@@ -16546,9 +16547,9 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedArmorInSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(ptr == System::IntPtr::Zero) return nullptr;
-                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1401E7760), ptr, (int)slot));
+                return MemoryObject::FromAddressSafeCast<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedArmorInSlot), ptr, (int)slot));
             }
             
             /// <summary>
@@ -16562,11 +16563,11 @@ namespace NetScriptFramework
                 if(ptr != System::IntPtr::Zero)
                 {
                     System::IntPtr obj = System::IntPtr::Zero;
-                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646050), ptr);
-                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(0x140646060), ptr);
+                    if(slot == EquippedHandSlots::LeftHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_LeftHand), ptr);
+                    else if(slot == EquippedHandSlots::RightHand) obj = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_RightHand), ptr);
                     if(obj != System::IntPtr::Zero)
                     {
-                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(0x1401870E0), obj);
+                        auto typeId = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedItemType_ItemType), obj);
                         rs = (int)(typeId.ToInt64() & 0xFFFF);
                     }
                 }
@@ -16579,7 +16580,7 @@ namespace NetScriptFramework
             virtual TESObjectARMO^ __clrcall GetEquippedShield() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(0x1409584F0), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESObjectARMO^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShield), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -16588,7 +16589,7 @@ namespace NetScriptFramework
             virtual TESShout^ __clrcall GetEquippedShout() sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(0x140958500), 0, 0, self->Address));
+                return MemoryObject::FromAddress<TESShout^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedShout), 0, 0, self->Address));
             }
             
             /// <summary>
@@ -16599,7 +16600,7 @@ namespace NetScriptFramework
                 auto self = this;
                 System::UInt32 arg = (System::UInt32)slot;
                 if(arg >= 4) return nullptr;
-                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(0x14094AFE0), 0, 0, self->Address, arg));
+                return MemoryObject::FromAddress<SpellItem^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetEquippedSpell), 0, 0, self->Address, arg));
             }
             
             /// <summary>
@@ -16609,7 +16610,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B150), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionRank), 0, 0, self->Address, faction->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -16619,7 +16620,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1A0), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (FactionReactions)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetFactionReaction), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -16630,7 +16631,7 @@ namespace NetScriptFramework
                 FlyingStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958520), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (FlyingStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_FlyingState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16642,13 +16643,13 @@ namespace NetScriptFramework
                 TESObjectREFR^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B2B0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESObjectREFR^ value) sealed
                 {
                     auto self = this;
                     MCH::e<TESObjectREFR^>(value, nullptr);
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CC10), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ForcedLandingMarker_Set), 0, 0, self->Address, value != nullptr ? value->Address : System::IntPtr::Zero);
                 }
             }
             
@@ -16658,7 +16659,7 @@ namespace NetScriptFramework
             virtual System::Int32 __clrcall GetGoldAmount() sealed
             {
                 auto self = this;
-                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958530), 0, 0, self->Address)) & 0xFFFFFFFF);
+                return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetGoldAmount), 0, 0, self->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -16669,7 +16670,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B1E0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HighestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16681,7 +16682,7 @@ namespace NetScriptFramework
                 Actor^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B220), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<Actor^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_KilledBy_Get), 0, 0, self->Address));
                 }
             }
             
@@ -16693,7 +16694,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this;
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958540), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Level_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16705,7 +16706,7 @@ namespace NetScriptFramework
                 TESNPC^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(0x14094B330), 0, 0, self->Address));
+                    auto npc = MemoryObject::FromAddress<TESNPC^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_BaseActor_Get), 0, 0, self->Address));
                     if(npc == nullptr)
                     {
                     auto obj = self->BaseForm;
@@ -16724,7 +16725,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958560), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_LightLevel_Get), 0, 0, self->Address);
                 }
             }
             
@@ -16736,7 +16737,7 @@ namespace NetScriptFramework
                 RelationshipRanks __clrcall get() sealed
                 {
                     auto self = this;
-                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B350), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_LowestRelationshipRank_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16748,12 +16749,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958570), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958860), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_NoBleedoutRecovery_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -16765,12 +16766,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B390), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094CE80), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ReceivesPlayerControls_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -16781,7 +16782,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B860), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
+                return (RelationshipRanks)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetRelationshipRank), 0, 0, self->Address, other->Address)) & 0xFFFFFFFF);
             }
             
             /// <summary>
@@ -16792,7 +16793,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B8D0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SitState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16804,7 +16805,7 @@ namespace NetScriptFramework
                 ActorActionStates __clrcall get() sealed
                 {
                     auto self = this;
-                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B910), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (ActorActionStates)(System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SleepState_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -16816,12 +16817,12 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x140958590), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Get), 0, 0, self->Address);
                 }
                 void __clrcall set(System::Single value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409588A0), 0, 0, self->Address, value);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_VoiceRecoveryTime_Set), 0, 0, self->Address, value);
                 }
             }
             
@@ -16833,7 +16834,7 @@ namespace NetScriptFramework
                 System::Single __clrcall get() sealed
                 {
                     auto self = this;
-                    return (float)Memory::InvokeCdeclF(MCH::FromBase(0x14094B3D0), 0, 0, self->Address);
+                    return (float)Memory::InvokeCdeclF(MCH::FromBase(GameAddress::Actor_WarmthRating_Get), 0, 0, self->Address);
                 }
             }
             
@@ -16845,7 +16846,7 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<BGSAssociationType^>(type, "type");
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B3E0), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasAssociation), 0, 0, self->Address, type->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16855,7 +16856,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, nullptr);
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B450), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasFamilyRelationship), 0, 0, self->Address, other != nullptr ? other->Address : System::IntPtr::Zero)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16867,7 +16868,7 @@ namespace NetScriptFramework
                 MCH::e<TESObjectREFR^>(other, "other");
                 if(other->FormType != FormTypes::Character && !self->Equals(PlayerCharacter::Instance)) return false;
                 stack10 s;
-                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(0x14091C810), self->Address, other->Address, s.ptr());
+                auto ptrResult = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasLOS_Papyrus), self->Address, other->Address, s.ptr());
                 auto result = MCH::u(ptrResult);
                 return (result & 0xFF) != 0;
             }
@@ -16879,7 +16880,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B530), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasParentRelationship), 0, 0, self->Address, other->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16890,7 +16891,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlarmed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16902,12 +16903,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094C6D0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAllowedToFly_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -16919,7 +16920,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B5F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrested_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16931,7 +16932,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBleedingOut_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16943,7 +16944,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDead_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16954,7 +16955,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B660), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_CanDetect), 0, 0, target->Address, self->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16964,7 +16965,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B6C0), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEquipped), 0, 0, self->Address, form->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -16975,7 +16976,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094B750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayersLastRiddenHorse_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16987,7 +16988,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsArrestingTarget_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -16999,12 +17000,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x1409587F0), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsAlerted_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -17015,7 +17016,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949F10), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasPerk), 0, 0, self->Address, perk->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17029,12 +17030,12 @@ namespace NetScriptFramework
                 if(formType == FormTypes::Spell)
                 {
                     auto arg = spellOrShout->As<SpellItem^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F00), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Spell), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 else if(formType == FormTypes::Shout)
                 {
                     auto arg = spellOrShout->As<TESShout^>();
-                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140632F40), self->Address, arg->Address)) & 0xFF) != 0;
+                    if(arg != nullptr) return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_HasSpell_Shout), self->Address, arg->Address)) & 0xFF) != 0;
                 }
                 return false;
             }
@@ -17047,12 +17048,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958810), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBribed_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -17064,7 +17065,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsChild_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17076,7 +17077,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409585F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsCommandedActor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17088,12 +17089,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958600), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958830), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsDoingFavor_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -17105,7 +17106,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958610), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsEssential_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17117,7 +17118,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958620), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsFlying_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17129,12 +17130,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958640), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958840), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGhost_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -17146,7 +17147,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958650), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsGuard_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17157,7 +17158,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958660), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsHostileToActor), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17168,7 +17169,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958670), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInCombat_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17179,7 +17180,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958680), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInFaction), 0, 0, self->Address, faction->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17190,7 +17191,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958690), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsInKillmove_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17202,12 +17203,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958850), 0, 0, self->Address, value ? 1 : 0 );
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsIntimidated_Set), 0, 0, self->Address, value ? 1 : 0 );
                 }
             }
             
@@ -17219,7 +17220,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnMount_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17231,7 +17232,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586C0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOverEncumbered_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17243,7 +17244,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586D0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsPlayerTeammate_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17255,7 +17256,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586E0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsRunning_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17267,13 +17268,13 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409586F0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
                     if(this->IsSneaking == value) return;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094DF50), 0, 0, self->Address); // This is a toggle
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSneaking_Set), 0, 0, self->Address); // This is a toggle
                 }
             }
             
@@ -17285,7 +17286,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958750), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsSprinting_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17297,7 +17298,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958770), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsTrespassing_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17309,12 +17310,12 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140958780), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x14094D280), 0, 0, self->Address, value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsUnconscious_Set), 0, 0, self->Address, value ? 1 : 0);
                 }
             }
             
@@ -17326,7 +17327,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587A0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsWeaponDrawn_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17342,15 +17343,15 @@ namespace NetScriptFramework
                     auto mt = this->As<MagicTarget^>();
                     if(mt == nullptr) return;
                     auto res1 = MCH::u(mt->InvokeVTableThisCall(0, 0x20));
-                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405D2710), self->Address));
+                    auto res2 = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_1), self->Address));
                     bool ok = (res1 & 0xFF) == 0 || (res2 & 0xFF) != 0;
                     if(!ok) return;
                 }
                 if((Memory::ReadUInt32(self->Address + 0xC0, false) & 0x1E00000) == 0xE00000)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x1405EE0E0), self->Address, 0, noEvents ? 0 : 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_2), self->Address, 0, noEvents ? 0 : 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405D48F0), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_Kill_3), self->Address, killer != nullptr ? killer->Address : System::IntPtr::Zero, (double)0.0, noEvents ? 0 : 1, 0);
             }
             
             /// <summary>
@@ -17374,7 +17375,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESFaction^>(faction, "faction");
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587C0), 0, 0, self->Address, faction->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromFaction), 0, 0, self->Address, faction->Address);
             }
             
             /// <summary>
@@ -17383,7 +17384,7 @@ namespace NetScriptFramework
             virtual void __clrcall RemoveFromAllFactions() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C100), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveFromAllFactions), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17393,7 +17394,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSPerk^>(perk, "perk");
-                Memory::InvokeCdecl(MCH::FromBase(0x140949F60), 0, 0, self->Address, perk->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemovePerk), 0, 0, self->Address, perk->Address);
             }
             
             /// <summary>
@@ -17403,7 +17404,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409587D0), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveShout), 0, 0, self->Address, shout->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17413,7 +17414,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<SpellItem^>(spell, "spell");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140949FA0), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_RemoveSpell), 0, 0, self->Address, spell->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17422,7 +17423,7 @@ namespace NetScriptFramework
             virtual void __clrcall ResetHealthAndLimbs() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x1409587E0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ResetHealthAndLimbs), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17443,12 +17444,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(assaulter, "assaulter");
-                Memory::InvokeCdecl(MCH::FromBase(0x1405DEA00), self->Address, assaulter->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_1), self->Address, assaulter->Address);
                 System::UInt32 flags = Memory::ReadUInt32(self->Address + 0xE0, false);
                 if(((flags >> 30) & 1) != 0) return;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14064FE40), process, self->Address, assaulter->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendAssaultAlarm_2), process, self->Address, assaulter->Address, 0);
             }
             
             /// <summary>
@@ -17458,7 +17459,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(criminal, "criminal");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C4F0), 0, 0, self->Address, criminal->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SendTrespassAlarm), 0, 0, self->Address, criminal->Address);
             }
             
             /// <summary>
@@ -17467,7 +17468,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAllowFlyingEx(bool allowFly, bool allowCrash, bool allowSearch) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C790), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAllowFlyingEx), 0, 0, self->Address, allowFly ? 1 : 0, allowCrash ? 1 : 0, allowSearch ? 1 : 0);
             }
             
             /// <summary>
@@ -17478,7 +17479,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094C850), 0, 0, self->Address, alpha, fade ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAlpha), 0, 0, self->Address, alpha, fade ? 1 : 0);
             }
             
             /// <summary>
@@ -17487,7 +17488,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetAttackedByAllOnSight(bool should) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958800), 0, 0, self->Address, should ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetAttackedByAllOnSight), 0, 0, self->Address, should ? 1 : 0);
             }
             
             /// <summary>
@@ -17498,7 +17499,7 @@ namespace NetScriptFramework
                 auto self = this;
                 int _s = (int)stage;
                 if(_s < 0 || _s >= 5) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1405EE870), self->Address, (int)stage);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetCriticalStage), self->Address, (int)stage);
             }
             
             /// <summary>
@@ -17507,7 +17508,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetDontMove(bool dontMove) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D140), 0, 0, self->Address, dontMove ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetDontMove), 0, 0, self->Address, dontMove ? 1 : 0);
             }
             
             /// <summary>
@@ -17521,7 +17522,7 @@ namespace NetScriptFramework
                 auto faceAnim = self->InvokeVTableThisCall(0, 0x318);
                 if(faceAnim == System::IntPtr::Zero) return false;
                 Memory::WriteUInt8(faceAnim + 0x21E, 0, false);
-                Memory::InvokeCdecl(MCH::FromBase(0x1403C40F0), faceAnim, expression, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetExpressionOverride), faceAnim, expression, amount);
                 Memory::WriteUInt8(faceAnim + 0x21E, 1, false);
                 return true;
             }
@@ -17562,7 +17563,7 @@ namespace NetScriptFramework
                 }
                 auto process = Memory::ReadPointer(self->Address + 0xF0, false);
                 if(process == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CC80), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtObject), 0, 0, self->Address, target->Address, whilePathing ? 1 : 0);
             }
             
             /// <summary>
@@ -17580,7 +17581,7 @@ namespace NetScriptFramework
                 void __clrcall set(bool value) sealed
                 {
                     auto self = this;
-                    Memory::InvokeCdecl(MCH::FromBase(0x140958870), 0, 0, self->Address, !value ? 1 : 0);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowOnStealthMeter_Set), 0, 0, self->Address, !value ? 1 : 0);
                 }
             }
             
@@ -17591,7 +17592,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSOutfit^>(outfit, "outfit");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CDB0), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetOutfit), 0, 0, self->Address, outfit->Address, sleepOutfit ? 1 : 0);
             }
             
             /// <summary>
@@ -17600,7 +17601,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerResistingArrest() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CEF0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerResistingArrest), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17609,7 +17610,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetPlayerTeammate(bool teammate, bool canDoFavors) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140958880), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetPlayerTeammate), 0, 0, self->Address, teammate ? 1 : 0, canDoFavors ? 1 : 0);
             }
             
             /// <summary>
@@ -17619,7 +17620,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(other, "other");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094CFA0), 0, 0, self->Address, other->Address, (int)rank);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRelationshipRank), 0, 0, self->Address, other->Address, (int)rank);
             }
             
             /// <summary>
@@ -17628,7 +17629,7 @@ namespace NetScriptFramework
             virtual void __clrcall SetRestrained(bool restrained) sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D100), 0, 0, self->Address, restrained ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetRestrained), 0, 0, self->Address, restrained ? 1 : 0);
             }
             
             /// <summary>
@@ -17638,7 +17639,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(vehicle, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D330), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetVehicle), 0, 0, self->Address, vehicle != nullptr ? vehicle->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -17647,7 +17648,7 @@ namespace NetScriptFramework
             virtual void __clrcall ShowBarterMenu() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D3B0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ShowBarterMenu), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17664,10 +17665,10 @@ namespace NetScriptFramework
                 if((MCH::u(target->InvokeVTableThisCall(0, 0x4C8, 0)) & 0xFF) != 0) return false;
                 if(!target->IsPlayer)
                 {
-                    auto p = Memory::InvokeCdecl(MCH::FromBase(0x1405FBC30), self->Address);
+                    auto p = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_1), self->Address);
                     if((MCH::u(p) & 0xFF) != 0) return false;
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x1405C58B0), Memory::ReadPointer(MCH::FromBase(0x142F5F978), false), self->Address, target->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartCombat_2), Memory::ReadPointer(MCH::FromBase(GameAddress::Actor_StartCombat_3), false), self->Address, target->Address);
                 return true;
             }
             
@@ -17677,7 +17678,7 @@ namespace NetScriptFramework
             virtual void __clrcall StartDeferredKill() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094E0A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StartDeferredKill), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17686,7 +17687,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombatAlarm() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA00), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombatAlarm), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17695,7 +17696,7 @@ namespace NetScriptFramework
             virtual void __clrcall StopCombat() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094D9A0), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_StopCombat), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17705,7 +17706,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<Actor^>(target, "target");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x14094DA40), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_TrapSoul), 0, 0, self->Address, target->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -17716,7 +17717,7 @@ namespace NetScriptFramework
                 auto self = this;
                 auto cell = this->ParentCell;
                 if(cell == nullptr || !cell->IsInterior) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DE20), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnlockOwnedDoorsInCell), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17725,7 +17726,7 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipAll() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA60), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipAll), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -17734,9 +17735,9 @@ namespace NetScriptFramework
             virtual void __clrcall UnequipItemSlot(EquipSlots slot) sealed
             {
                 auto self = this;
-                auto data = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto data = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(data == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x1401E77B0), data, (int)slot, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItemSlot), data, (int)slot, self->Address);
             }
             
             /// <summary>
@@ -17747,9 +17748,9 @@ namespace NetScriptFramework
                 auto self = this;
                 MCH::e<TESForm^>(form, "form");
                 if(!form->Has3D) return;
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094DA80), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipItem), 0, 0, self->Address, form->Address, preventEquip ? 1 : 0, silent ? 1 : 0);
             }
             
             /// <summary>
@@ -17759,7 +17760,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESShout^>(shout, "shout");
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AA60), 0, 0, self->Address, shout->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipShout), 0, 0, self->Address, shout->Address);
             }
             
             /// <summary>
@@ -17771,7 +17772,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AB00), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UnequipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -17783,7 +17784,7 @@ namespace NetScriptFramework
                 MCH::e<SpellItem^>(spell, "spell");
                 int _s = (int)slot;
                 if(_s < 0 || _s >= 3) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14094AAA0), 0, 0, self->Address, spell->Address, (int)slot);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_EquipSpell), 0, 0, self->Address, spell->Address, (int)slot);
             }
             
             /// <summary>
@@ -17794,7 +17795,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1409588B0), 0, 0, self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WillIntimidateSucceed_Get), 0, 0, self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -17805,9 +17806,9 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
-                auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, keyword->Address);
+                auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, keyword->Address);
                 return (MCH::u(result) & 0xFF) != 0;
             }
             
@@ -17818,12 +17819,12 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(keyword == nullptr) throw gcnew System::ArgumentNullException("keyword");
-                auto cont = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                auto cont = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                 if(cont == System::IntPtr::Zero) return false;
                 auto ls = KeywordCache::Get(keyword);
                 for each(BGSKeyword^ kw in ls)
                 {
-                    auto result = Memory::InvokeCdecl(MCH::FromBase(0x1401D9360), cont, kw->Address);
+                    auto result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_WornHasKeyword), cont, kw->Address);
                     if((MCH::u(result) & 0xFF) != 0) return true;
                 }
                 return false;
@@ -17839,7 +17840,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D380), process, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_ClearLookAtPosition), process, self->Address);
             }
             
             /// <summary>
@@ -17857,7 +17858,7 @@ namespace NetScriptFramework
                 if(process == System::IntPtr::Zero) return;
                 auto race = this->Race;
                 if(race == nullptr || !race->CanHeadTrack) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14067D310), process, self->Address, position->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_SetLookAtPosition), process, self->Address, position->Address);
             }
             
             /// <summary>
@@ -17866,7 +17867,7 @@ namespace NetScriptFramework
             virtual void __clrcall InterruptCast() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x140631E70), self->Address, 0);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_InterruptCast), self->Address, 0);
             }
             
             /// <summary>
@@ -17877,7 +17878,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1402E4500), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsBeingRidden_Get), self->Address));
                 }
             }
             
@@ -17889,7 +17890,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this;
-                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x1406059B0), self->Address));
+                    return MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_IsOnFlyingMount_Get), self->Address));
                 }
             }
             
@@ -17904,10 +17905,10 @@ namespace NetScriptFramework
                     auto ptr = Memory::ReadPointer(self->Address + 0xF0, false);
                     if(ptr != System::IntPtr::Zero)
                     {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x14067BFE0), ptr);
+                    ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_UpdateMovementControllerPosition), ptr);
                     if(ptr != System::IntPtr::Zero)
                     {
-                    ptr = Memory::InvokeCdecl(MCH::FromBase(0x140AB9480), ptr + 480);
+                    ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_MovementState_Get), ptr + 480);
                     return (bhkCharacterStateTypes)((int)(MCH::u(ptr) & 0xFF));
                     }
                     }
@@ -17948,7 +17949,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EDB0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMount), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -17972,7 +17973,7 @@ namespace NetScriptFramework
                 try
                 {
                     Memory::WritePointer(alloc->Address, System::IntPtr::Zero, false);
-                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(0x14062EEC0), self->Address, alloc->Address)))
+                    if(MCH::b(Memory::InvokeCdecl(MCH::FromBase(GameAddress::Actor_GetMountedBy), self->Address, alloc->Address)))
                     {
                         result = MemoryObject::FromAddress<Actor^>(Memory::ReadPointer(alloc->Address, false));
                         if(result != nullptr) result->DecRef();
@@ -18059,7 +18060,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 MCH::e<TESObjectREFR^>(activator, "activator");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140296DF0), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Activate), self->Address, activator->Address, 0, 0, 1, skipEvents ? 1 : 0)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -18070,7 +18071,7 @@ namespace NetScriptFramework
                 BGSLocation^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(0x1402996E0), self->Address));
+                    return MemoryObject::FromAddress<BGSLocation^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_CurrentLocation_Get), self->Address));
                 }
             }
             
@@ -18081,7 +18082,7 @@ namespace NetScriptFramework
             {
                 auto self = this;
                 if(!self->HasInventory) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x14085EC90), self->Address, (int)type);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_OpenInventory), self->Address, (int)type);
             }
             
             /// <summary>
@@ -18106,7 +18107,7 @@ namespace NetScriptFramework
                 ExtraContainerChanges::Data^ __clrcall get() sealed
                 {
                     auto self = this;
-                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401D9010), self->Address);
+                    auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_Inventory_Get), self->Address);
                     return MemoryObject::FromAddress<ExtraContainerChanges::Data^>(ptr);
                 }
             }
@@ -18122,7 +18123,7 @@ namespace NetScriptFramework
                 StringRefHolder^ str = gcnew StringRefHolder(name);
                 try
                 {
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1404F08D0), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_SetAnimationVariableBool), graph->Address, str->AddressOf, value ? 1 : 0)) & 0xFF) == 0;
                 }
                 finally
                 {
@@ -18149,7 +18150,7 @@ namespace NetScriptFramework
             virtual BSExtraData^ __clrcall GetExtraData(ExtraDataTypes type) sealed
             {
                 auto self = this;
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1401325B0), self->Address, (int)type);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectREFR_GetExtraData), self->Address, (int)type);
                 return MemoryObject::FromAddress<BSExtraData^>(ptr);
             }
             
@@ -18184,7 +18185,7 @@ namespace NetScriptFramework
                 auto self = this->As<MagicTarget^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
                 stack10 s;
-                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140553350), self->Address, keyword->Address, s.ptr()));
+                System::UInt64 p = MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectWithKeyword), self->Address, keyword->Address, s.ptr()));
                 if((p & 0xFF) == 0) return false;
                 System::IntPtr itemPtr = System::IntPtr(s.get<void*>(0));
                 if(itemPtr != System::IntPtr::Zero) item = MemoryObject::FromAddress<MagicItem^>(itemPtr);
@@ -18212,7 +18213,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<EffectSetting^>(effect, "effect");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405532C0), self->Address, effect->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffect), self->Address, effect->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -18222,7 +18223,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<MagicTarget^>();
                 MCH::e<TESObjectREFR^>(onlyFromCaster, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x140552ED0), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_DispelEffectsWithArchetype), self->Address, (int)archetype, onlyFromCaster != nullptr ? onlyFromCaster->Address : System::IntPtr::Zero);
             }
             
             /// <summary>
@@ -18233,7 +18234,7 @@ namespace NetScriptFramework
                 bool __clrcall get() sealed
                 {
                     auto self = this->As<MagicTarget^>();
-                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x1405534A0), self->Address)) & 0xFF) != 0;
+                    return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_HasMagicEffectThatCausesDamage_Get), self->Address)) & 0xFF) != 0;
                 }
             }
             
@@ -18243,7 +18244,7 @@ namespace NetScriptFramework
             virtual ActiveEffect^ __clrcall FindFirstEffectWithArchetype(Archetypes archetype, bool allowInactive) sealed
             {
                 auto self = this->As<MagicTarget^>();
-                auto ptr = Memory::InvokeCdecl(MCH::FromBase(0x1405545C0), self->Address, (int)archetype, allowInactive ? 1 : 0);
+                auto ptr = Memory::InvokeCdecl(MCH::FromBase(GameAddress::MagicTarget_FindFirstEffectWithArchetype), self->Address, (int)archetype, allowInactive ? 1 : 0);
                 return MemoryObject::FromAddress<ActiveEffect^>(ptr);
             }
             
@@ -18303,7 +18304,7 @@ namespace NetScriptFramework
             {
                 auto actor = this->As<Actor^>();
                 if(actor == nullptr) return;
-                Memory::InvokeCdecl(MCH::FromBase(0x140620AF0), actor->Address, (int)id, amount);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ActorValueOwner_RestoreActorValue), actor->Address, (int)id, amount);
             }
             
             /// <summary>
@@ -18439,7 +18440,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -18450,7 +18451,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -18649,7 +18650,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -18660,7 +18661,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -18702,7 +18703,7 @@ namespace NetScriptFramework
                 MCH::e<TESAmmo^>(ammo, nullptr);
                 MCH::e<MagicItem^>(enchant, nullptr);
                 MCH::e<MagicItem^>(poison, nullptr);
-                Memory::InvokeCdecl(MCH::FromBase(0x140235430), self->Address, source != nullptr ? source->Address : System::IntPtr::Zero, ammo != nullptr ? ammo->Address : System::IntPtr::Zero, enchant != nullptr ? enchant->Address : System::IntPtr::Zero, poison != nullptr ? poison->Address : System::IntPtr::Zero);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESObjectWEAP_Fire), self->Address, source != nullptr ? source->Address : System::IntPtr::Zero, ammo != nullptr ? ammo->Address : System::IntPtr::Zero, enchant != nullptr ? enchant->Address : System::IntPtr::Zero, poison != nullptr ? poison->Address : System::IntPtr::Zero);
             }
         };
         
@@ -18744,16 +18745,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -18877,9 +18878,9 @@ namespace NetScriptFramework
                 }
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -18906,9 +18907,9 @@ namespace NetScriptFramework
                 alloc.set<int>(4, (int)flags);
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
         };
         
@@ -19011,9 +19012,9 @@ namespace NetScriptFramework
                 }
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19040,9 +19041,9 @@ namespace NetScriptFramework
                 alloc.set<int>(4, (int)flags);
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19077,16 +19078,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -19170,16 +19171,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -19247,16 +19248,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -19398,9 +19399,9 @@ namespace NetScriptFramework
                 }
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19427,9 +19428,9 @@ namespace NetScriptFramework
                 alloc.set<int>(4, (int)flags);
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19464,16 +19465,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -19626,9 +19627,9 @@ namespace NetScriptFramework
                 }
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19655,9 +19656,9 @@ namespace NetScriptFramework
                 alloc.set<int>(4, (int)flags);
                 if(this->Collidable != nullptr)
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140DC5C20), self->Address, 1);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update_Collidable), self->Address, 1);
                 }
-                Memory::InvokeCdecl(MCH::FromBase(0x140C56890), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiAVObject_Update), self->Address, alloc.ptr());
             }
             
             /// <summary>
@@ -19692,16 +19693,16 @@ namespace NetScriptFramework
                 auto self = this;
                 System::IntPtr result = System::IntPtr::Zero;
                 stack100 alloc;
-                alloc.set(0x18, MCH::FromBase(0x141DD948C));
-                alloc.set(0x48, MCH::FromBase(0x141DD9488));
-                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(0x143039500), false));
-                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(0x141E2C374), false));
+                alloc.set(0x18, MCH::FromBase(GameAddress::gUnkCloneValue1));
+                alloc.set(0x48, MCH::FromBase(GameAddress::gUnkCloneValue2));
+                alloc.set(0x60, Memory::ReadInt32(MCH::FromBase(GameAddress::gUnkCloneValue3), false));
+                alloc.set(0x64, Memory::ReadUInt8(MCH::FromBase(GameAddress::gUnkCloneValue4), false));
                 alloc.set(0x68, 1.0f);
                 alloc.set(0x6C, 1.0f);
                 alloc.set(0x70, 1.0f);
-                result = Memory::InvokeCdecl(MCH::FromBase(0x140C52560), self->Address, alloc.ptr());
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8D80), alloc.ptr() + 0x38);
-                Memory::InvokeCdecl(MCH::FromBase(0x1401B8CC0), alloc.ptr() + 0x8);
+                result = Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_1), self->Address, alloc.ptr());
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_2), alloc.ptr() + 0x38);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::NiObject_Clone_3), alloc.ptr() + 0x8);
                 return MemoryObject::FromAddressSafeCast<NiObject^>(result);
             }
             
@@ -21304,7 +21305,7 @@ namespace NetScriptFramework
             virtual void __clrcall EnterFirstPerson() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14084B3F0), self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::PlayerCamera_EnterFirstPerson), self->Address);
             }
             
             /// <summary>
@@ -21313,7 +21314,7 @@ namespace NetScriptFramework
             virtual void __clrcall EnterThirdPerson() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14084B540), self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::PlayerCamera_EnterThirdPerson), self->Address);
             }
         };
         
@@ -21440,7 +21441,7 @@ namespace NetScriptFramework
                 System::Int32 __clrcall get() sealed
                 {
                     auto self = this->As<TESForm^>();
-                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CA0), 0, 0, self->Address)) & 0xFFFFFFFF);
+                    return (System::Int32)(MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_GoldValue_Get), 0, 0, self->Address)) & 0xFFFFFFFF);
                 }
             }
             
@@ -21451,7 +21452,7 @@ namespace NetScriptFramework
             {
                 auto self = this->As<TESForm^>();
                 MCH::e<BGSKeyword^>(keyword, "keyword");
-                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(0x140985CE0), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
+                return (MCH::u(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_HasKeyword), 0, 0, self->Address, keyword->Address)) & 0xFF) != 0;
             }
             
             /// <summary>
@@ -21489,7 +21490,7 @@ namespace NetScriptFramework
             virtual BGSBaseAlias^ __clrcall GetAlias(System::Int32 id) sealed
             {
                 auto self = this;
-                return MemoryObject::FromAddress<BGSBaseAlias^>(Memory::InvokeCdecl(MCH::FromBase(0x1409B46C0), 0, 0, self->Address, id));
+                return MemoryObject::FromAddress<BGSBaseAlias^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESQuest_GetAlias), 0, 0, self->Address, id));
             }
         };
         
@@ -21534,7 +21535,7 @@ namespace NetScriptFramework
             virtual void __clrcall Clear() sealed
             {
                 auto self = this;
-                Memory::InvokeCdecl(MCH::FromBase(0x14096A150), 0, 0, self->Address);
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::BGSRefAlias_Clear), 0, 0, self->Address);
             }
             
             /// <summary>
@@ -21545,7 +21546,7 @@ namespace NetScriptFramework
                 TESObjectREFR^ __clrcall get() sealed
                 {
                     auto self = this;
-                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(0x14096A1A0), 0, 0, self->Address));
+                    return MemoryObject::FromAddress<TESObjectREFR^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::BGSRefAlias_Reference_Get), 0, 0, self->Address));
                 }
                 void __clrcall set(TESObjectREFR^ value) sealed
                 {
@@ -21553,10 +21554,10 @@ namespace NetScriptFramework
                     MCH::e<TESObjectREFR^>(value, nullptr);
                     if(value == nullptr)
                     {
-                    this->Clear();
-                    return;
+						this->Clear();
+						return;
                     }
-                    Memory::InvokeCdecl(MCH::FromBase(0x14096A220), 0, 0, self->Address, value->Address);
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::BGSRefAlias_Reference_Set), 0, 0, self->Address, value->Address);
                 }
             }
         };

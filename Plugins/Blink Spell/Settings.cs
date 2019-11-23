@@ -65,14 +65,14 @@ namespace BlinkSpell
             set;
         } = 1.0f;
         
-        public NetScriptFramework.Skyrim.SpellItem SpellForm
+        public NetScriptFramework.SkyrimSE.SpellItem SpellForm
         {
             get
             {
                 var sp = this._spell;
                 if(sp == null)
                 {
-                    sp = NetScriptFramework.Skyrim.TESForm.LookupFormFromFile<NetScriptFramework.Skyrim.SpellItem>(this.SpellFormId, this.SpellFormFile);
+                    sp = NetScriptFramework.SkyrimSE.TESForm.LookupFormFromFile<NetScriptFramework.SkyrimSE.SpellItem>(this.SpellFormId, this.SpellFormFile);
                     this._spell = sp;
                 }
                 return sp;
@@ -82,7 +82,7 @@ namespace BlinkSpell
                 this._spell = value;
             }
         }
-        private NetScriptFramework.Skyrim.SpellItem _spell = null;
+        private NetScriptFramework.SkyrimSE.SpellItem _spell = null;
 
         [ConfigValue("SpellFormId", "Spell form ID", "The form ID of the spell to use.", ConfigEntryFlags.PreferHex)]
         internal uint SpellFormId
@@ -147,15 +147,15 @@ namespace BlinkSpell
             set;
         } = "Skyrim.esm";
 
-        public NetScriptFramework.Skyrim.TESForm SoundForm
+        public NetScriptFramework.SkyrimSE.TESForm SoundForm
         {
             get
             {
                 var so = this._sound;
                 if (so == null)
                 {
-                    so = NetScriptFramework.Skyrim.TESForm.LookupFormFromFile(this.SoundFormId, this.SoundFormFile);
-                    if (so == null || so.FormType == NetScriptFramework.Skyrim.FormTypes.SoundDescriptor)
+                    so = NetScriptFramework.SkyrimSE.TESForm.LookupFormFromFile(this.SoundFormId, this.SoundFormFile);
+                    if (so == null || so.FormType == NetScriptFramework.SkyrimSE.FormTypes.SoundDescriptor)
                         this._sound = so;
                     else
                         so = null;
@@ -164,11 +164,11 @@ namespace BlinkSpell
             }
             set
             {
-                if (value == null || value.FormType == NetScriptFramework.Skyrim.FormTypes.SoundDescriptor)
+                if (value == null || value.FormType == NetScriptFramework.SkyrimSE.FormTypes.SoundDescriptor)
                     this._sound = value;
             }
         }
-        private NetScriptFramework.Skyrim.TESForm _sound = null;
+        private NetScriptFramework.SkyrimSE.TESForm _sound = null;
 
         [ConfigValue("IModFormId", "Image space modifier form id", "The image space modifier to apply when teleporting.", ConfigEntryFlags.PreferHex)]
         internal uint IModFormId
@@ -184,15 +184,15 @@ namespace BlinkSpell
             set;
         } = "BlinkSpell.esp";
 
-        public NetScriptFramework.Skyrim.TESForm IModForm
+        public NetScriptFramework.SkyrimSE.TESForm IModForm
         {
             get
             {
                 var so = this._imod;
                 if (so == null)
                 {
-                    so = NetScriptFramework.Skyrim.TESForm.LookupFormFromFile(this.IModFormId, this.IModFormFile);
-                    if (so == null || so.FormType == NetScriptFramework.Skyrim.FormTypes.ImageSpaceMod)
+                    so = NetScriptFramework.SkyrimSE.TESForm.LookupFormFromFile(this.IModFormId, this.IModFormFile);
+                    if (so == null || so.FormType == NetScriptFramework.SkyrimSE.FormTypes.ImageSpaceMod)
                         this._imod = so;
                     else
                         so = null;
@@ -201,11 +201,11 @@ namespace BlinkSpell
             }
             set
             {
-                if (value == null || value.FormType == NetScriptFramework.Skyrim.FormTypes.ImageSpaceMod)
+                if (value == null || value.FormType == NetScriptFramework.SkyrimSE.FormTypes.ImageSpaceMod)
                     this._imod = value;
             }
         }
-        private NetScriptFramework.Skyrim.TESForm _imod = null;
+        private NetScriptFramework.SkyrimSE.TESForm _imod = null;
 
         [ConfigValue("MagickaCost", "Magicka cost", "Teleportation takes this much magicka.")]
         public float MagickaCost

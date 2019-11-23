@@ -17,5 +17,6 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Events.h" />
     <ClInclude Include="Extra2.h" />
+    <ClInclude Include="GameAddresses.h" />
   </ItemGroup>
 </Project>

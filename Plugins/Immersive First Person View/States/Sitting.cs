@@ -45,7 +45,7 @@ namespace IFPV.States
             if (actor == null)
                 return false;
 
-            if (actor.SitState == NetScriptFramework.Skyrim.ActorActionStates.NotAction)
+            if (actor.SitState == NetScriptFramework.SkyrimSE.ActorActionStates.NotAction)
                 return false;
             
             return true;

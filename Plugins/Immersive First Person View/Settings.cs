@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
 using NetScriptFramework.Tools;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace IFPV
 {

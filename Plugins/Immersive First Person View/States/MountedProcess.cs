@@ -37,8 +37,8 @@ namespace IFPV.States
 
             switch (actor.SitState)
             {
-                case NetScriptFramework.Skyrim.ActorActionStates.NotAction:
-                case NetScriptFramework.Skyrim.ActorActionStates.InProgress:
+                case NetScriptFramework.SkyrimSE.ActorActionStates.NotAction:
+                case NetScriptFramework.SkyrimSE.ActorActionStates.InProgress:
                     return false;
             }
 

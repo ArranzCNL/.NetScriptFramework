@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace CraftingSkill
 {
@@ -38,7 +38,7 @@ namespace CraftingSkill
         {
             get
             {
-                return 1;
+                return 2;
             }
         }
 
@@ -53,7 +53,7 @@ namespace CraftingSkill
             var game = NetScriptFramework.Main.Game;
             var debug = CrashLog.Debug;
 
-            if (game == null || game.LibraryVersion < 7 || debug == null)
+            if (game == null || game.LibraryVersion < 10 || debug == null)
                 throw new InvalidOperationException(this.Name + " requires a newer version of .NET Script Framework! Go update.");
 
             this.init();
@@ -63,6 +63,11 @@ namespace CraftingSkill
 
         private void init()
         {
+            // Setup GameOffset - Updated PrepareFunction & InstallHook to take this value, I didn't update directly incase some use a different Offset.
+            int GameOffset = 0x0; // Everything is based from 1_5_62
+            var GameVersion = NetScriptFramework.Main.Game.GameVersion; // Get the game version
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80) GameOffset = 0x1F0; // Check for game version 1_5_73 and 1_5_80, update GameOffset
+
             Settings = new Settings();
             Settings.Load();
             
@@ -74,15 +79,15 @@ namespace CraftingSkill
 
             // Tempering something.
             if(temperMode >= 1 && temperMode <= 3)
-                this.InstallHook(50477, 0x115, 6, "FF 90 B8 07 00 00", _Hook_SmithingTemper);
+                this.InstallHook(50477, 0x115, 6, "FF 90 B8 07 00 00", GameOffset, _Hook_SmithingTemper);
 
             // Crafting something (creating object).
             if(smithMode >= 1 && smithMode <= 3)
-                this.InstallHook(50476, 0x91, 6, "FF 90 B8 07 00 00", _Hook_SmithingCraft);
+                this.InstallHook(50476, 0x91, 6, "FF 90 B8 07 00 00", GameOffset, _Hook_SmithingCraft);
 
             // Enchanting something (creating enchantment).
             if(enchantMode >= 2 && enchantMode <= 3)
-                this.InstallHook(50450, 0x275, 6, "FF 90 B8 07 00 00", _Hook_Enchanting);
+                this.InstallHook(50450, 0x275, 6, "FF 90 B8 07 00 00", GameOffset, _Hook_Enchanting);
 
             // Disenchanting.
             if (disenchantMode >= 1 && disenchantMode <= 3)
@@ -91,9 +96,9 @@ namespace CraftingSkill
                 if (fn == null)
                     throw new InvalidOperationException(this.Name + " failed to write disenchanting hook!");
 
-                fn_Disenchant = new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin));
+                fn_Disenchant = new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin) - (ulong)GameOffset) );
 
-                this.InstallHook(50459, 0xBA, 6, "FF 90 B8 07 00 00", _Hook_Disenchanting);
+                this.InstallHook(50459, 0xBA, 6, "FF 90 B8 07 00 00", GameOffset, _Hook_Disenchanting);
             }
 
             // Alchemy (create potion).
@@ -103,15 +108,15 @@ namespace CraftingSkill
                 if (fn == null)
                     throw new InvalidOperationException(this.Name + " failed to write alchemy hook (1)!");
 
-                fn_Alchemy1 = new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin));
+                fn_Alchemy1 = new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin) - (ulong)GameOffset) );
 
                 fn = CrashLog.Debug.GetFunctionInfo(50463);
                 if (fn == null)
                     throw new InvalidOperationException(this.Name + " failed to write alchemy hook (2)!");
 
-                fn_Alchemy2 = new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin));
+                fn_Alchemy2 = new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin) - (ulong)GameOffset) );
 
-                this.InstallHook(50449, 0x207, 6, "FF 90 B8 07 00 00", _Hook_Alchemy);
+                this.InstallHook(50449, 0x207, 6, "FF 90 B8 07 00 00", GameOffset, _Hook_Alchemy);
             }
         }
 
@@ -119,13 +124,13 @@ namespace CraftingSkill
         private static IntPtr fn_Alchemy2;
         private static IntPtr fn_Disenchant;
 
-        private void InstallHook(ulong vid, int offset, int length, string hex, Action<CPURegisters> func)
+        private void InstallHook(ulong vid, int offset, int length, string hex, int addrOffset, Action<CPURegisters> func)
         {
             var fn = CrashLog.Debug.GetFunctionInfo(vid);
             if (fn == null)
                 throw new InvalidOperationException("Failed to find function for hook in debug library!");
 
-            var addr = new IntPtr((long)(CrashLog.Debug.BaseOffset + fn.Begin + (ulong)offset));
+            var addr = new IntPtr( (long)((CrashLog.Debug.BaseOffset + fn.Begin + (ulong)offset) - (ulong)addrOffset) );
             if (!Memory.VerifyBytes(addr, hex))
                 throw new InvalidOperationException("Failed to verify byte pattern! This could mean plugin must be updated or conflict with another plugin.");
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NetScriptFramework;
-using NetScriptFramework.Skyrim;
+using NetScriptFramework.SkyrimSE;
 
 namespace UninterruptedInvisibility
 {
@@ -30,7 +30,7 @@ namespace UninterruptedInvisibility
         {
             get
             {
-                return 1;
+                return 2;
             }
         }
 
@@ -51,7 +51,7 @@ namespace UninterruptedInvisibility
         protected override bool Initialize(bool loadedAny)
         {
             var game = NetScriptFramework.Main.Game;
-            if (game == null || game.LibraryVersion < 7)
+            if (game == null || game.LibraryVersion < 10)
                 throw new InvalidOperationException(this.Name + " requires a newer version of .NET Script Framework. You must update the framework to use this plugin.");
 
             this._Initialize();

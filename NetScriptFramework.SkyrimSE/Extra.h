@@ -1,10 +1,10 @@
 #pragma once
 #include "Game.h"
-#include "Constants.h"
+#include "GameAddresses.h"
 
 namespace NetScriptFramework
 {
-	namespace Skyrim
+	namespace SkyrimSE
 	{		
 		/// <summary>
 		/// Implements game string handling.
@@ -27,7 +27,7 @@ namespace NetScriptFramework
 				{
 					Memory::WriteBytes(_alloc->Address + 0x10, bytes, false);
 					Memory::WriteUInt32(_alloc->Address + 0x10 + bytes->Length, 0, false);
-					Memory::InvokeCdecl(MCH::FromBase(Constants::BSFixedString__Initialize), _alloc->Address, _alloc->Address + 0x10);
+					Memory::InvokeCdecl(MCH::FromBase(GameAddress::BSFixedString__Initialize), _alloc->Address, _alloc->Address + 0x10);
 				}
 			}
 
@@ -82,7 +82,7 @@ namespace NetScriptFramework
 			{
 				if (_alloc != nullptr)
 				{
-					Memory::InvokeCdecl(MCH::FromBase(Constants::BSFixedString__Release), _alloc->Address);
+					Memory::InvokeCdecl(MCH::FromBase(GameAddress::BSFixedString__Release), _alloc->Address);
 
 					delete _alloc;
 					_alloc = nullptr;
@@ -106,10 +106,10 @@ namespace NetScriptFramework
 			/// </summary>
 			static void Initialize()
 			{
-				if (Memory::ReadInt32(MCH::FromBase(Constants::gMemoryManagerState), false) == 2)
+				if (Memory::ReadInt32(MCH::FromBase(GameAddress::gMemoryManagerState), false) == 2)
 					return;
 
-				Memory::InvokeCdecl(MCH::FromBase(Constants::Memory__static_ctor), MCH::FromBase(Constants::gMemoryManager), MCH::FromBase(Constants::gMemoryManagerState));
+				Memory::InvokeCdecl(MCH::FromBase(GameAddress::Memory__static_ctor), MCH::FromBase(GameAddress::gMemoryManager), MCH::FromBase(GameAddress::gMemoryManagerState));
 			}
 
 		public:			
@@ -119,7 +119,7 @@ namespace NetScriptFramework
 			/// <returns></returns>
 			static bool IsInitialized()
 			{
-				return Memory::ReadInt32(MCH::FromBase(Constants::gMemoryManagerState), false) == 2;
+				return Memory::ReadInt32(MCH::FromBase(GameAddress::gMemoryManagerState), false) == 2;
 			}
 
 			/// <summary>
@@ -137,7 +137,7 @@ namespace NetScriptFramework
 
 				Initialize();
 
-				return Memory::InvokeCdecl(MCH::FromBase(Constants::Memory__Allocate), MCH::FromBase(Constants::gMemoryManager), size, align);
+				return Memory::InvokeCdecl(MCH::FromBase(GameAddress::Memory__Allocate), MCH::FromBase(GameAddress::gMemoryManager), size, align);
 			}
 
 			/// <summary>
@@ -152,7 +152,7 @@ namespace NetScriptFramework
 
 				Initialize();
 
-				Memory::InvokeCdecl(MCH::FromBase(Constants::Memory__Free), MCH::FromBase(Constants::gMemoryManager), buf, aligned ? 1 : 0);
+				Memory::InvokeCdecl(MCH::FromBase(GameAddress::Memory__Free), MCH::FromBase(GameAddress::gMemoryManager), buf, aligned ? 1 : 0);
 			}
 		};
 
@@ -178,7 +178,7 @@ namespace NetScriptFramework
 				Memory::WriteUInt32(alloc->Address, 0, false);
 				try
 				{
-					Memory::InvokeCdecl(MCH::FromBase(Constants::CreateRefHandleId), alloc->Address, obj->Address);
+					Memory::InvokeCdecl(MCH::FromBase(GameAddress::CreateRefHandleId), alloc->Address, obj->Address);
 					_value = Memory::ReadUInt32(alloc->Address, false);
 				}
 				finally
@@ -203,7 +203,7 @@ namespace NetScriptFramework
 					Memory::WritePointer(alloc->Address + 0x10, System::IntPtr::Zero, false);
 					try
 					{
-						Memory::InvokeCdecl(MCH::FromBase(Constants::LookupObjectByRefHandle), alloc->Address, alloc->Address + 0x10);
+						Memory::InvokeCdecl(MCH::FromBase(GameAddress::LookupObjectByRefHandle), alloc->Address, alloc->Address + 0x10);
 						System::IntPtr result = Memory::ReadPointer(alloc->Address + 0x10, false);
 						if (result != System::IntPtr::Zero)
 							_obj = MemoryObject::FromAddress<TESObjectREFR^>(result);

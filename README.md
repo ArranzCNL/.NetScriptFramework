@@ -1,3 +1,10 @@
+**FAN UPDATE v1.5.73 - 1.5.80 by ArranzCNL**
+
+Added GameAddresses.h to NetScriptFramework.SkyrimSE which stores all memory addresses for easier maintainability.
+Changed namespace from Skyrim to SkyrimSE just incase it does get backported to original Skyrim.
+Removed Constants.h from NetScriptFramework.SkyrimSE as it is no longer required.
+
+
  **Introduction**
 
 .NET Script Framework allows mod authors to write DLL plugins for any game  or application in any .NET language. Currently it only supports 64 bit  but there are plans to support 32 bit applications in the future.

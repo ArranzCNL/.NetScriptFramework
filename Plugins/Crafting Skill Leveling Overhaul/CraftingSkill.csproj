@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,13 +29,14 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NetScriptFramework">
-      <HintPath>..\Resources\NetScriptFramework.dll</HintPath>
+      <HintPath>..\NetScriptFramework\bin\Debug\NetScriptFramework.dll</HintPath>
     </Reference>
-    <Reference Include="NetScriptFramework.Skyrim">
-      <HintPath>..\Resources\NetScriptFramework.Skyrim.dll</HintPath>
+    <Reference Include="NetScriptFramework.SkyrimSE">
+      <HintPath>..\NetScriptFramework.SkyrimSE\x64\Debug\NetScriptFramework.SkyrimSE.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

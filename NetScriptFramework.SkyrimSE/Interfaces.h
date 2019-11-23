@@ -3,10 +3,11 @@
 #pragma warning(disable : 4638)
 
 #include "Extra2.h"
+#include "GameAddresses.h"
 
 namespace NetScriptFramework
 {
-    namespace Skyrim
+    namespace SkyrimSE
     {
         /// <summary>
         /// Base form component implementation. All inheritable components of a form derive from this type.
@@ -1227,7 +1228,7 @@ namespace NetScriptFramework
             {
                     Main^ get()
                     {
-                        return MemoryObject::FromAddress<Main^>(Memory::ReadPointer(MCH::FromBase(0x142F4DBF8), false));
+                        return MemoryObject::FromAddress<Main^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_Main), false));
                     }
             }
             
@@ -1802,7 +1803,7 @@ namespace NetScriptFramework
             {
                     MenuManager^ get()
                     {
-                        return MemoryObject::FromAddress<MenuManager^>(Memory::ReadPointer(MCH::FromBase(0x141EE5B20), false));
+                        return MemoryObject::FromAddress<MenuManager^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_MenuManager), false));
                     }
             }
             
@@ -1826,7 +1827,7 @@ namespace NetScriptFramework
                     auto allocSound = uiSound != nullptr ? Memory::AllocateString(uiSound, false) : nullptr;
                     try
                     {
-                        Memory::InvokeCdecl(MCH::FromBase(0x1408DA5C0), allocMessage->Address, allocSound != nullptr ? allocSound->Address : System::IntPtr::Zero, unk ? 1 : 0);
+                        Memory::InvokeCdecl(MCH::FromBase(GameAddress::ShowHUDMessage), allocMessage->Address, allocSound != nullptr ? allocSound->Address : System::IntPtr::Zero, unk ? 1 : 0);
                     }
                     finally
                     {
@@ -1848,7 +1849,7 @@ namespace NetScriptFramework
             {
                     InputManager^ get()
                     {
-                        return MemoryObject::FromAddress<InputManager^>(Memory::ReadPointer(MCH::FromBase(0x142EECBD0), false));
+                        return MemoryObject::FromAddress<InputManager^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_InputManager), false));
                     }
             }
         };
@@ -2377,13 +2378,13 @@ namespace NetScriptFramework
             static Setting^ FindSettingByName(System::String^ name, bool searchIni, bool searchPrefIni)
             {
                     if(name == nullptr) throw gcnew System::ArgumentNullException("name");
-                    auto func = MCH::FromBase(0x1403106C0);
+                    auto func = MCH::FromBase(GameAddress::Setting_FindSettingByName_func);
                     auto str = Memory::AllocateString(name, false);
                     try
                     {
                         if(searchIni)
                         {
-                            auto ptr = Memory::ReadPointer(MCH::FromBase(0x143044758), false);
+                            auto ptr = Memory::ReadPointer(MCH::FromBase(GameAddress::Setting_FindSettingByName_searchIni), false);
                             if(ptr != System::IntPtr::Zero)
                             {
                                 auto result = MemoryObject::FromAddress<Setting^>(Memory::InvokeCdecl(func, ptr, str->Address));
@@ -2392,7 +2393,7 @@ namespace NetScriptFramework
                         }
                         if(searchPrefIni)
                         {
-                            auto ptr = Memory::ReadPointer(MCH::FromBase(0x142F92A48), false);
+                            auto ptr = Memory::ReadPointer(MCH::FromBase(GameAddress::Setting_FindSettingByName_searchPrefIni), false);
                             if(ptr != System::IntPtr::Zero)
                             {
                                 auto result = MemoryObject::FromAddress<Setting^>(Memory::InvokeCdecl(func, ptr, str->Address));
@@ -2493,7 +2494,7 @@ namespace NetScriptFramework
             {
                     MenuScreenData^ get()
                     {
-                        return MemoryObject::FromAddress<MenuScreenData^>(Memory::ReadPointer(MCH::FromBase(0x142F4E140), false));
+                        return MemoryObject::FromAddress<MenuScreenData^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_MenuScreenData), false));
                     }
             }
         };
@@ -2536,7 +2537,7 @@ namespace NetScriptFramework
             {
                     PlayerControls^ get()
                     {
-                        return MemoryObject::FromAddress<PlayerControls^>(Memory::ReadPointer(MCH::FromBase(0x142EECBD8), false));
+                        return MemoryObject::FromAddress<PlayerControls^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_PlayerControls), false));
                     }
             }
         };
@@ -2822,7 +2823,7 @@ namespace NetScriptFramework
             static TESForm^ LookupFormById(System::UInt32 formId)
             
             {
-                return MemoryObject::FromAddress<TESForm^>(Memory::InvokeCdecl(MCH::FromBase(0x140194420), formId));
+                return MemoryObject::FromAddress<TESForm^>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_LookupFormById), formId));
             }
             
             /// <summary>
@@ -2835,7 +2836,7 @@ namespace NetScriptFramework
             static T LookupFormById(System::UInt32 formId)
             
             {
-                return MemoryObject::FromAddressSafeCast<T>(Memory::InvokeCdecl(MCH::FromBase(0x140194420), formId));
+                return MemoryObject::FromAddressSafeCast<T>(Memory::InvokeCdecl(MCH::FromBase(GameAddress::TESForm_LookupFormById), formId));
             }
             
             /// <summary>
@@ -2899,10 +2900,10 @@ namespace NetScriptFramework
             static void ForEachForm(System::Func<TESForm^, bool>^ func)
             {
                 if(func == nullptr) throw gcnew System::ArgumentNullException("func");
-                Memory::InvokeCdecl(MCH::FromBase(0x140C074C0), MCH::FromBase(0x141EEB150));
+                Memory::InvokeCdecl(MCH::FromBase(GameAddress::ForEachForm_1), MCH::FromBase(GameAddress::ForEachForm_2));
                 try
                 {
-                    auto ptr = Memory::ReadPointer(MCH::FromBase(0x141EEACB8), false);
+                    auto ptr = Memory::ReadPointer(MCH::FromBase(GameAddress::ForEachForm_3), false);
                     auto formMap = MemoryObject::FromAddress<BSTDefaultScatterTable2<unsigned int, TESForm^>^>(ptr);
                     if(formMap != nullptr)
                     {
@@ -2914,7 +2915,7 @@ namespace NetScriptFramework
                 }
                 finally
                 {
-                    Memory::InvokeCdecl(MCH::FromBase(0x140C07780), MCH::FromBase(0x141EEB150));
+                    Memory::InvokeCdecl(MCH::FromBase(GameAddress::ForEachForm_4), MCH::FromBase(GameAddress::ForEachForm_2));
                 }
             }
         };
@@ -3089,7 +3090,7 @@ namespace NetScriptFramework
             {
                 DataHandler^ get()
                 {
-                    return MemoryObject::FromAddress<DataHandler^>(Memory::ReadPointer(MCH::FromBase(0x141EE5428), false));
+                    return MemoryObject::FromAddress<DataHandler^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_DataHandler), false));
                 }
             }
         };
@@ -3578,7 +3579,7 @@ namespace NetScriptFramework
             {
                 TES^ get()
                 {
-                    return MemoryObject::FromAddress<TES^>(Memory::ReadPointer(MCH::FromBase(0x142F4DB20), false));
+                    return MemoryObject::FromAddress<TES^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_TES), false));
                 }
             }
         };
@@ -3890,7 +3891,7 @@ namespace NetScriptFramework
             {
                     CrossHairPickData^ get()
                     {
-                        return MemoryObject::FromAddress<CrossHairPickData^>(Memory::ReadPointer(MCH::FromBase(0x142F281D0), false));
+                        return MemoryObject::FromAddress<CrossHairPickData^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_CrossHairPickData), false));
                     }
             }
         };
@@ -5287,7 +5288,7 @@ namespace NetScriptFramework
             {
                 PlayerCharacter^ get()
                 {
-                    return MemoryObject::FromAddress<PlayerCharacter^>(Memory::ReadPointer(MCH::FromBase(0x142F4DEF8), false));
+                    return MemoryObject::FromAddress<PlayerCharacter^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_PlayerCharacter), false));
                 }
             }
         };
@@ -5926,7 +5927,7 @@ namespace NetScriptFramework
             {
                     PlayerCamera^ get()
                     {
-                        return MemoryObject::FromAddress<PlayerCamera^>(Memory::ReadPointer(MCH::FromBase(0x142EEC9B8), false));
+                        return MemoryObject::FromAddress<PlayerCamera^>(Memory::ReadPointer(MCH::FromBase(GameAddress::Instance_PlayerCamera), false));
                     }
             }
             
