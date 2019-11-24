@@ -33,11 +33,11 @@
   <ItemGroup>
     <Reference Include="NetScriptFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Games\Steam\steamapps\common\Skyrim Special Edition\Data\NetScriptFramework\NetScriptFramework.dll</HintPath>
+      <HintPath>..\..\NetScriptFramework\bin\Debug\NetScriptFramework.dll</HintPath>
     </Reference>
     <Reference Include="NetScriptFramework.SkyrimSE, Version=1.0.7141.28163, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Games\Steam\steamapps\common\Skyrim Special Edition\Data\NetScriptFramework\NetScriptFramework.SkyrimSE.dll</HintPath>
+      <HintPath>..\..\NetScriptFramework.SkyrimSE\x64\Debug\NetScriptFramework.SkyrimSE.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

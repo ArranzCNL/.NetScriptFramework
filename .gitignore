@@ -8,3 +8,38 @@ NetScriptFramework.SkyrimSE/.vs/NetScriptFramework.SkyrimSE/v16/Browse.VC.db
 Plugins/Blink Spell/.vs/BlinkSpell/v16/.suo
 Plugins/Crafting Skill Leveling Overhaul/.vs/CraftingSkill/v16/.suo
 Plugins/Immersive First Person View/.vs/IFPV/v16/.suo
+*.user
+*.vcxproj
+*.ipch
+*.db
+*.vcxproj
+*.obj
+*.res
+*.tlog
+*.pdb
+*.dll
+*.xml
+*.log
+*.xdc
+*.CopyComplete
+*.asm
+*.lib
+*.txt
+*.exp
+*.metagen
+*.pch
+*.csproj
+*.vcxproj
+Plugins/Uninterrupted Invisibility/UninterruptedInvisibility.csproj
+Plugins/Uninterrupted Invisibility/.vs/UninterruptedInvisibility/v16/.suo
+Plugins/Uninterrupted Ethereal Form/UninterruptedEtherealForm.csproj
+Plugins/Uninterrupted Ethereal Form/.vs/UninterruptedEtherealForm/v16/.suo
+Plugins/Immersive First Person View/IFPV.csproj
+Plugins/Crafting Skill Leveling Overhaul/CraftingSkill.csproj
+Plugins/Blink Spell/BlinkSpell.csproj
+NetScriptFramework/.vs/NetScriptFramework/v16/.suo
+NetScriptFramework.SkyrimSE/NetScriptFramework.SkyrimSE.vcxproj
+NetScriptFramework.Runtime/NetScriptFramework.Runtime.vcxproj
+NetScriptFramework.Runtime/.vs/NetScriptFramework.Runtime/v16/.suo
+Plugins/Uninterrupted Invisibility/UninterruptedInvisibility.csproj
+Plugins/Uninterrupted Ethereal Form/UninterruptedEtherealForm.csproj
