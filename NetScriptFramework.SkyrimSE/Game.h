@@ -105,6 +105,9 @@ namespace NetScriptFramework
 #ifdef _SKYRIMSE_VER_1_5_73
 					return GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80;
 #endif
+#ifdef _SKYRIMSE_VER_1_5_97 
+					return GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] == 97;
+#endif
                 }
             }
             
