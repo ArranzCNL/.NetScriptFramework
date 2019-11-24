@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UninterruptedInvisibility")]
+[assembly: AssemblyTitle("UninterruptedEtherealForm")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("WZT")]
-[assembly: AssemblyProduct("UninterruptedInvisibility")]
+[assembly: AssemblyProduct("UninterruptedEtherealForm")]
 [assembly: AssemblyCopyright("Copyright © WZT 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("11aaf5e8-5e1d-48be-a6c5-bfcf6649805c")]
+[assembly: Guid("b148bb9a-c9b2-4eed-aab3-53d9165cd29e")]
 
 // Version information for an assembly consists of the following four values:
 //

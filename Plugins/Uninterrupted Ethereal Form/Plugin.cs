@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using NetScriptFramework;
 using NetScriptFramework.SkyrimSE;
 
-namespace UninterruptedInvisibility
+namespace UninterruptedEtherealForm
 {
-    public sealed class UninterruptedInvisibilityPlugin : Plugin
+    public sealed class UninterruptedEtherealFormPlugin : Plugin
     {
         public override string Key
         {
             get
             {
-                return "un_invis";
+                return "un_ethereal";
             }
         }
 
@@ -22,7 +22,7 @@ namespace UninterruptedInvisibility
         {
             get
             {
-                return "Uninterrupted Invisibility";
+                return "Uninterrupted Ethereal Form";
             }
         }
 
@@ -64,23 +64,23 @@ namespace UninterruptedInvisibility
             this.Settings = new Settings();
             this.Settings.Load();
 
-            if(this.Settings.SuperInvisibility)
+            if (this.Settings.SuperInvisibility)
             {
                 Events.OnCalculateDetection.Register(e =>
                 {
                     Actor actor = e.TargetActor;
-                    if (actor != null && actor.FindFirstEffectWithArchetype(Archetypes.Invisibility, false) != null)
+                    if (actor != null && actor.FindFirstEffectWithArchetype(Archetypes.Etherealize, false) != null)
                         e.ResultValue = -1000;
                 }, 1);
             }
 
-            if(this.Settings.DontRemove > 0)
+            if (this.Settings.DontRemove > 0)
             {
                 int mode = this.Settings.DontRemove;
                 if (mode == 1)
                     Events.OnRemoveMagicEffectsWithArchetype.Register(e =>
                     {
-                        if (e.Archetype != Archetypes.Invisibility || e.Reason != MagicEffectRemovalReasons.Activation)
+                        if (e.Archetype != Archetypes.Etherealize || e.Reason != MagicEffectRemovalReasons.Activation)
                             return;
 
                         e.Skip = true;
@@ -88,7 +88,7 @@ namespace UninterruptedInvisibility
                 else if (mode == 2)
                     Events.OnRemoveMagicEffectsWithArchetype.Register(e =>
                     {
-                        if (e.Archetype != Archetypes.Invisibility || e.Reason == MagicEffectRemovalReasons.Expired)
+                        if (e.Archetype != Archetypes.Etherealize || e.Reason == MagicEffectRemovalReasons.Expired)
                             return;
 
                         e.Skip = true;
