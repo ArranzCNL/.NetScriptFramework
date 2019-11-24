@@ -153,7 +153,7 @@ namespace IFPV
             // Setup GameOffset - Updated PrepareFunction & InstallHook to take this value, I didn't update directly incase some use a different Offset.
             int GameOffset = 0x0; // Everything is based from 1_5_62
             var GameVersion = NetScriptFramework.Main.Game.GameVersion; // Get the game version
-            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80) GameOffset = 0x1F0; // Check for game version 1_5_73 and 1_5_80, update GameOffset
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 97) GameOffset = 0x1F0; // Check for game version 1_5_73 to 1_5_97, update GameOffset
 
             this.Timer = new NetScriptFramework.Tools.Timer();
             this.Timer.Start();
@@ -162,7 +162,12 @@ namespace IFPV
             this.Settings.Load();
 
             this.PlayerControls_IsCamSwitchControlsEnabled = this.PrepareFunction("player camera switch controls check", 41263, 0, GameOffset);
-            this.NiNode_ctor = this.PrepareFunction("ninode ctor", 68936, 0, GameOffset);
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80)
+                this.NiNode_ctor = this.PrepareFunction("ninode ctor", 68936, 0, GameOffset);
+            
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] == 97)
+                this.NiNode_ctor = this.PrepareFunction("ninode ctor", 68936, 0, -0x2C0);
+
             this.MagicNodeArt1 = this.PrepareFunction("magic node art 1", 33403, 0x6F, GameOffset);
             this.MagicNodeArt2 = this.PrepareFunction("magic node art 2", 33391, 0x64, GameOffset);
             this.MagicNodeArt3 = this.PrepareFunction("magic node art 3", 33375, 0xF5, GameOffset);

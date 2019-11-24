@@ -2,3 +2,9 @@
 NetScriptFramework.SkyrimSE/.vs/NetScriptFramework.SkyrimSE/v16/.suo
 NetScriptFramework.SkyrimSE/.vs/NetScriptFramework.SkyrimSE/v16/Browse.VC.db
 *.sln
+*.cache
+*.ide
+*.lock
+Plugins/Blink Spell/.vs/BlinkSpell/v16/.suo
+Plugins/Crafting Skill Leveling Overhaul/.vs/CraftingSkill/v16/.suo
+Plugins/Immersive First Person View/.vs/IFPV/v16/.suo

@@ -122,7 +122,7 @@ namespace NetScriptFramework
             {
                 System::Int32 __clrcall get() override
                 {
-                    return 11;
+                    return 10;
                 }
             }
             

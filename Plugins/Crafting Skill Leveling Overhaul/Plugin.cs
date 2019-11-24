@@ -66,7 +66,7 @@ namespace CraftingSkill
             // Setup GameOffset - Updated PrepareFunction & InstallHook to take this value, I didn't update directly incase some use a different Offset.
             int GameOffset = 0x0; // Everything is based from 1_5_62
             var GameVersion = NetScriptFramework.Main.Game.GameVersion; // Get the game version
-            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 80) GameOffset = 0x1F0; // Check for game version 1_5_73 and 1_5_80, update GameOffset
+            if (GameVersion[0] == 1 && GameVersion[1] == 5 && GameVersion[2] >= 73 && GameVersion[2] <= 97) GameOffset = 0x1F0; // Check for game version 1_5_73 to 1_5_97, update GameOffset
 
             Settings = new Settings();
             Settings.Load();
