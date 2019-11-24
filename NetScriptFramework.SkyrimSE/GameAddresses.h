@@ -1740,8 +1740,8 @@ namespace NetScriptFramework
 /* Start of Implementations.h */
 			static const System::Int64 ActorValueOwner_RestoreActorValue                                                                                         = 0x140620900;
 			static const System::Int64 NiObject_Clone_1                                                                                                          = 0x140C52370;
-			static const System::Int64 NiObject_Clone_2                                                                                                          = 0x0;
-			static const System::Int64 NiObject_Clone_3                                                                                                          = 0x0;
+			static const System::Int64 NiObject_Clone_2                                                                                                          = 0x1401B8B90;
+			static const System::Int64 NiObject_Clone_3                                                                                                          = 0x1401B8AD0;
 			static const System::Int64 Main_IsGamePaused_Get                                                                                                     = 0x142F26B74;
 			static const System::Int64 Mutex_Lock1                                                                                                               = 0x140132BD0;
 			static const System::Int64 MenuManager_IsMenuOpen                                                                                                    = 0x140EBE150;
