@@ -7,7 +7,7 @@ Removed Constants.h from NetScriptFramework.SkyrimSE as it is no longer required
 
 
 
- **Introduction - Creator and Author [meh321](https://www.nexusmods.com/skyrimspecialedition/users/2964753) [Original](https://www.nexusmods.com/skyrimspecialedition/mods/21294)**
+ **Introduction - Creator and Author [meh321](https://www.nexusmods.com/skyrimspecialedition/users/2964753) Original: [.NetScript Framework](https://www.nexusmods.com/skyrimspecialedition/mods/21294)**
 
 .NET Script Framework allows mod authors to write DLL plugins for any game  or application in any .NET language. Currently it only supports 64 bit  but there are plans to support 32 bit applications in the future.
 
