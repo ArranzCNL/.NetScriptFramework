@@ -1004,7 +1004,7 @@ namespace NetScriptFramework
 			static const System::Int64 BGSProjectile                                                                                                             = 0x1E111F0;
 			static const System::Int64 bhkSimpleShapePhantom                                                                                                     = 0x1E1B130;
 			static const System::Int64 bhkShapePhantom                                                                                                           = 0x1E1B160;
-			static const System::Int64  bhkPhantom                                                                                                               = 0x1E1AF70;
+			static const System::Int64 bhkPhantom                                                                                                                = 0x1E1AF70;
 			static const System::Int64 BSGeometry                                                                                                                = 0x1E18870;
 			static const System::Int64 NiSkinInstance                                                                                                            = 0x1E9A8E8;
 			static const System::Int64 BSDismemberSkinInstance                                                                                                   = 0x1E9A910;
@@ -1646,7 +1646,7 @@ namespace NetScriptFramework
 			static const System::Int64 BGSProjectile                                                                                                             = 0x1E111F0;
 			static const System::Int64 bhkSimpleShapePhantom                                                                                                     = 0x1E1B130;
 			static const System::Int64 bhkShapePhantom                                                                                                           = 0x1E1B160;
-			static const System::Int64  bhkPhantom                                                                                                               = 0x1E1AF70;
+			static const System::Int64 bhkPhantom                                                                                                                = 0x1E1AF70;
 			static const System::Int64 BSGeometry                                                                                                                = 0x1E18870;
 			static const System::Int64 NiSkinInstance                                                                                                            = 0x1E9A8E8;
 			static const System::Int64 BSDismemberSkinInstance                                                                                                   = 0x1E9A910;
