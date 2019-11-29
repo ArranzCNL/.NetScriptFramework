@@ -1,12 +1,13 @@
-**FAN UPDATE v1.5.73 - 1.5.80 by ArranzCNL**
+**FAN UPDATE v1.5.73 - 1.5.97 by ArranzCNL**
 
+If you compile from sources for 1.5.97 Blink plugin is currently causing issues, might be a core address incorrect.
 Added GameAddresses.h to NetScriptFramework.SkyrimSE which stores all memory addresses for easier maintainability.
 Changed namespace from Skyrim to SkyrimSE just incase it does get backported to original Skyrim.
 Removed Constants.h from NetScriptFramework.SkyrimSE as it is no longer required.
 
 
 
- **Introduction**
+ **Introduction - Creator and Author [meh321](https://www.nexusmods.com/skyrimspecialedition/users/2964753) Original: [.NetScript Framework](https://www.nexusmods.com/skyrimspecialedition/mods/21294)**
 
 .NET Script Framework allows mod authors to write DLL plugins for any game  or application in any .NET language. Currently it only supports 64 bit  but there are plans to support 32 bit applications in the future.
 
